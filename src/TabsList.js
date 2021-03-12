@@ -63,6 +63,15 @@ export class TabsList extends HTMLChildrenMixin(LitElement) {
         type: Boolean,
         attribute: 'scroll-tabs',
       },
+      /**
+       * Bolean if icons tabs has scroll
+       * @type Bolean
+       * @property
+       */
+       listenOutsideEvent: {
+        type: Boolean,
+        attribute: 'listen-outside-event',
+      },
     };
   }
 
@@ -76,7 +85,8 @@ export class TabsList extends HTMLChildrenMixin(LitElement) {
     this.tabFocus = 0;
     this.tabList = '';
     this.tabs = '';
-    this.displayedIcon = 0;
+    this.displayedIcon = '';
+    this.listenOutsideEvent= false;
 
     this.KEYS = {
       left: 37,
@@ -89,6 +99,7 @@ export class TabsList extends HTMLChildrenMixin(LitElement) {
     super.connectedCallback();
     this.data = this._HTMLChildren();
     console.log(this.data)
+    console.log(this.listenOutsideEvent)
     document.addEventListener('item:selected', this._listenEventfromNav);
   }
 
@@ -156,14 +167,14 @@ export class TabsList extends HTMLChildrenMixin(LitElement) {
 
  
   _changeTab(el) {
-    if (!this.scrollTabs) {
-      window.location = `#${el.id}`;
+    if (this.listenOutsideEvent) {
+      window.location.hash = `#${el.id}`;
     }
     const parent = el.parentNode;
     const grandparent = parent.parentNode;
 
-    console.log(el)
-    this.displayedIcon = parseInt(el.id.slice(el.id.length - 1));
+    this.displayedIcon = el.id;
+    console.log(this.displayedIcon, el.id)
 
     // Remove all current selected tabs
     parent
@@ -186,7 +197,6 @@ export class TabsList extends HTMLChildrenMixin(LitElement) {
 
   // eslint-disable-next-line class-methods-use-this
   displayedTabIcon(icon) {
-    console.log(icon)
     return html`
       <img class="kw-tab-list__icon-displayed" src="${icon.src}" alt="">\
   `;
@@ -209,17 +219,16 @@ export class TabsList extends HTMLChildrenMixin(LitElement) {
       const iconNotSelected = icons[iconKey].imageIconNotSelected;
       iconsArr.push(html`
         <button role="tab" class="kw-tab-list__button"  aria-selected="${!index}" tabindex="0" aria-controls="panel-${index}" 
-                id="${index}" data-link="${iconKey}"
+                id="${icons[iconKey].iconTitle}" data-link="${iconKey}"
                 @click="${this._handleChangeWithMouse}">
           <img src="${icon.src}" alt="${icon.alt}" class="kw-tab-list__image" />
           <span class="kw-tab-list__title ${classMap({ sub_title_uppercase: this.scrollTabs })}">
-            ${icon['data-content']}
+            ${icons[iconKey].iconTitle}
           </span>
-            ${index === this.displayedIcon ? this.displayedTabIcon(iconSelected) : this.notDisplayedTabIcon(iconNotSelected)}
+            ${icons[iconKey].iconTitle === this.displayedIcon ? this.displayedTabIcon(iconSelected) : this.notDisplayedTabIcon(iconNotSelected)}
         </button>
       `);
       index += 1;
-      console.log(index)
     });
     return iconsArr.map((el) => el);
   }
