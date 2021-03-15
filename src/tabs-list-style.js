@@ -9,7 +9,7 @@ export const TabsListStyles = css`
   font-weight: 300;
 }
 
-.kw-tab-list .kw-tab-list__icons {
+.kw-tab-list__icons {
   display: flex;
   flex-direction: column;
   margin-bottom: 20px;
@@ -52,8 +52,10 @@ export const TabsListStyles = css`
 }
 
 .compact {
-  margin-bottom: 30px;
+  width: 100%;
+  line-height: 31px;
 }
+
 
 .title_uppercase {
   text-transform: uppercase;
@@ -87,12 +89,6 @@ export const TabsListStyles = css`
   margin-bottom: 20px;
 }
 
-.compact {
-  max-width: 850px;
-  line-height: 31px;
-  
-}
-
 .kw-tab-list__picture {
   max-height: 280px;
   display: flex;
@@ -115,7 +111,6 @@ export const TabsListStyles = css`
 }
 .kw-tab--list__link {
       max-width: fit-content;
-      margin: 0 auto;
       box-sizing: border-box;
       background-color: inherit;
       border: none;
@@ -165,44 +160,6 @@ export const TabsListStyles = css`
     background-size: cover;
 }
 
-  .kw-tab-list__icons-scroll-tabs {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    overflow-x: scroll;
-    width: 100%;
-  }
-
-  .kw-tab-list__icons-scroll-tabs .kw-tab-list__button {
-    min-width: 135px;
-    margin-right : 15px;
-  }
-
-  .kw-tab-list__icons-scroll-tabs .kw-tab-list__button[aria-selected="true"],
-  .kw-tab-list__icons-scroll-tabs .kw-tab-list__button:hover,
-  .kw-tab-list__icons-scroll-tabs .kw-tab-list__button:focus {
-    border-top: 4px solid var(--main-color);
-    outline: 0;
-  }
-
-  .kw-tab-list__icons-scroll-tabs .kw-tab-list__button:not([aria-selected="true"]) {
-    border-top: 4px solid var(--white-color);
-    filter: grayscale(100%);
-    -webkit-filter: grayscale(100%);
-    -moz-filter: grayscale(100%);
-    -ms-filter: grayscale(100%);
-    -o-filter: grayscale(100%);
-  }
-
-  .kw-tab-list__icons-scroll-tabs .kw-tab-list__button[aria-selected="true"],
-  .kw-tab-list__icons-scroll-tabs .kw-tab-list__button:hover,
-  .kw-tab-list__icons-scroll-tabs .kw-tab-list__button:focus {
-    outline: 0;
-  }
-
-  .kw-tab-list__icons-scroll-tabs .kw-tab-list__image {
-    max-width: 135px;
-  }
 
   .link_max_width {
     min-width: 100%;
@@ -254,7 +211,46 @@ export const TabsListStyles = css`
   .no_color_button .kw-tab-list__image {
     max-height: 140px;
   }
-  @media(min-width: 768px) {
+
+  .icons_scroll_tabs {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    overflow-x: scroll;
+  }
+
+  .icons_scroll_tabs .kw-tab-list__button {
+    min-width: 135px;
+    margin-right : 15px;
+  }
+
+  .icons_scroll_tabs .kw-tab-list__button[aria-selected="true"],
+  .icons_scroll_tabs .kw-tab-list__button:hover,
+  .icons_scroll_tabs .kw-tab-list__button:focus {
+    border-top: 4px solid var(--main-color);
+    outline: 0;
+  }
+
+  .icons_scroll_tabs .kw-tab-list__button:not([aria-selected="true"]) {
+    border-top: 4px solid var(--white-color);
+    filter: grayscale(100%);
+    -webkit-filter: grayscale(100%);
+    -moz-filter: grayscale(100%);
+    -ms-filter: grayscale(100%);
+    -o-filter: grayscale(100%);
+  }
+
+  .icons_scroll_tabs .kw-tab-list__button[aria-selected="true"],
+  .icons_scroll_tabs .kw-tab-list__button:hover,
+  .icons_scroll_tabs .kw-tab-list__button:focus {
+    outline: 0;
+  }
+
+  .icons_scroll_tabs .kw-tab-list__image {
+    max-width: 135px;
+  }
+
+  @media all and (min-width: 768px) {
 
     .kw-tab-list .kw-tab-list__button {
       min-width: 266px;
@@ -300,11 +296,16 @@ export const TabsListStyles = css`
       margin: 0;
     }
 
-    .kw-tab-list__icons-scroll-tabs .kw-tab-list__button {
+    .compact {
+      margin-bottom: 30px;
+      max-width: 850px;
+      line-height: 31px;
+    }
+    .icons_scroll_tabs .kw-tab-list__button {
       min-width: 230px;
       margin-right : 0;
     }
-    .kw-tab-list__icons-scroll-tabs .kw-tab-list__image {
+    .icons_scroll_tabs .kw-tab-list__image {
       width: 100%;
     }
     .panel__scrollTabs .kw-tab-list__picture {

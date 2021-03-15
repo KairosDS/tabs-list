@@ -68,6 +68,15 @@ export class TabsList extends HTMLChildrenMixin(LitElement) {
        * @type Bolean
        * @property
        */
+       collapsableTabs: {
+        type: Boolean,
+        attribute: 'collapsible-tabs',
+      },
+      /**
+       * Bolean if icons tabs has scroll
+       * @type Bolean
+       * @property
+       */
        listenOutsideEvent: {
         type: Boolean,
         attribute: 'listen-outside-event',
@@ -87,6 +96,7 @@ export class TabsList extends HTMLChildrenMixin(LitElement) {
     this.tabs = '';
     this.displayedIcon = '';
     this.listenOutsideEvent= false;
+    this.collapsableTabs = false;
 
     this.KEYS = {
       left: 37,
@@ -98,8 +108,6 @@ export class TabsList extends HTMLChildrenMixin(LitElement) {
   connectedCallback() {
     super.connectedCallback();
     this.data = this._HTMLChildren();
-    console.log(this.data)
-    console.log(this.listenOutsideEvent)
     document.addEventListener('item:selected', this._listenEventfromNav);
   }
 
@@ -174,7 +182,6 @@ export class TabsList extends HTMLChildrenMixin(LitElement) {
     const grandparent = parent.parentNode;
 
     this.displayedIcon = el.id;
-    console.log(this.displayedIcon, el.id)
 
     // Remove all current selected tabs
     parent
@@ -210,6 +217,7 @@ export class TabsList extends HTMLChildrenMixin(LitElement) {
   }
 
   drawIcons(icons) {
+    console.log('oconnon')
     const iconsKeys = Object.keys(icons);
     const iconsArr = [];
     let index = 0;
@@ -234,6 +242,7 @@ export class TabsList extends HTMLChildrenMixin(LitElement) {
   }
 
   drawTabs(tabs) {
+    console.log('joojoj')
     const tabsKeys = Object.keys(tabs);
     const tabsArr = [];
     let index = 0;
@@ -271,28 +280,30 @@ export class TabsList extends HTMLChildrenMixin(LitElement) {
     const iconsArr = [];
     let index = 0;
     iconsKeys.forEach((iconKey) => {
-      const icon = icons[iconKey][0];
+      const icon = icons[iconKey].buttonImage;
+      const iconSelected = icons[iconKey].imageIconSelected;
+      const iconNotSelected = icons[iconKey].imageIconNotSelected;
       iconsArr.push(html`
           <button role="tab" class="kw-tab-list__button" aria-selected="${!index}" tabindex="0" aria-controls="panel-${index}" 
-                  id="${icons[iconKey].iconCapacity}"
-                  data-link="${icons[iconKey].iconCapacity}"
-                  @click="${this._handleChangeWithMouse}">
+              id="${icons[iconKey].iconTitle}" 
+              data-link="${iconKey}"
+              @click="${this._handleChangeWithMouse}">
             <img src="${icon.src}" alt="${icon.alt}" class="kw-tab-list__image" />
             <span class="kw-tab-list__title">
               ${icon['data-content']}
             </span>
-            ${index === this.displayedIcon ? this.displayedTabIcon : this.notDisplayedTabIcon}
+            ${icons[iconKey].iconTitle === this.displayedIcon ? this.displayedTabIcon(iconSelected) : this.notDisplayedTabIcon(iconNotSelected)}
           </button>
           <div id="panel-${index}" role="tabpanel" class="kw-tab-list__panel" tabindex="0" ?hidden=${!!index} aria-label="tab-${index}">
-            ${tabs[index].image ? html`
+            ${tabs[iconKey].image ? html`
               <div class="kw-tab-list__info-container">
-                <p class="compact">${tabs[index].description}</p>
+                <p class="compact">${tabs[iconKey].description}</p>
                 <div class= "kw-tab-list__picture">
-                <img  src="${tabs[index].image.src}" alt="${tabs[index].image.alt}" />
+                  <img  src="${tabs[iconKey].image.src}" alt="${tabs[iconKey].image.alt}" />
                 </div>
-                  ${tabs[index].url ? html`
-                    <a class="kw-tab--list__link kw-tab--list__link--raised" href="${tabs[index].url.href}" ?download="${!!tabs[index].download}" rel="noopener noreferrer">${tabs[index].url.content}</a> ` : html``}
-              </div> ` : html``}
+                  ${tabs[iconKey].url ? html`
+                    <a class="kw-tab--list__link kw-tab--list__link--raised" href="${tabs[iconKey].url.href}" ?download="${!!tabs[iconKey].download}" rel="noopener noreferrer">${tabs[iconKey].url.content}</a> ` : ''}
+              </div> ` : ''}
           </div>
       `);
       index += 1;
@@ -300,63 +311,56 @@ export class TabsList extends HTMLChildrenMixin(LitElement) {
     return iconsArr.map((el) => el);
   }
 
-  drawMobileViewScrollTabs(tabs) {
-    const tabsKeys = Object.keys(tabs);
-    const tabsArr = [];
-    let index = 0;
-    tabsKeys.forEach((tabKey) => {
-      const tab = tabs[tabKey];
-      tabsArr.push(html`
-      <div id="panel-${index}" role="tabpanel" class="kw-tab-list__panel" tabindex="0" ?hidden=${!!index} aria-label="tab-${index}">
-      ${tab.image ? html`
-        <div class="kw-tab-list__info-container ${classMap({ container_max_width: this.scrollTabs })}">
-          <h2 class="kw-tab-list__title--orange compact ${classMap({ title_uppercase: this.scrollTabs })}">${tab.title}</h2>
-          ${tab.subTitle ? html` 
-          <h3 class="kw-tab-list__subTitle">${tab.subTitle}</h3>` : html``}
-          <p class="compact">${tab.description}</p>
-          <div>
-            <img class="kw-tab-list__picture" src="${tab.image.src}" alt="${tab.image.alt}" />
-            ${tab.url ? html`
-              <a class="kw-tab--list__link kw-tab--list__link--raised  ${classMap({ link_max_width: this.scrollTabs })}"  href="${tab.url.href}" ?download="${!!tab.download}" target="_blank" rel="noopener noreferrer">${tab.url.content}</a>
-            ` : html``}
-          </div>
-        </div>` : html`
-        <div class="kw-tab-list__info-container">
-          <h2 class="kw-tab-list__title--orange ${classMap({ title_uppercase: this.scrollTabs })}">${tab.title}</h2>
-          <p class="kw-tab-list__descrition">${tab.description}</p>
-          ${tab.url ? html`
-          <a class="kw-tab--list__link kw-tab--list__link--raised" href="${tab.url}" ?download="${!!tab.download}" target="_blank">${tab.linkText}</a>` : html``}
-        </div>
-      `}
-    </div>`);
-      index += 1;
-    });
-    return tabsArr.map((el) => el);
-  }
+  // drawMobileViewScrollTabs(tabs) {
+  //   const tabsKeys = Object.keys(tabs);
+  //   const tabsArr = [];
+  //   let index = 0;
+  //   tabsKeys.forEach((tabKey) => {
+  //     const tab = tabs[tabKey];
+  //     tabsArr.push(html`
+  //     <div id="panel-${index}" role="tabpanel" class="kw-tab-list__panel" tabindex="0" ?hidden=${!!index} aria-label="tab-${index}">
+  //     ${tab.image ? html`
+  //       <div class="kw-tab-list__info-container ${classMap({ container_max_width: this.scrollTabs })}">
+  //         <h2 class="kw-tab-list__title--orange compact ${classMap({ title_uppercase: this.scrollTabs })}">${tab.title}</h2>
+  //         ${tab.subTitle ? html` 
+  //         <h3 class="kw-tab-list__subTitle">${tab.subTitle}</h3>` : html``}
+  //         <p class="compact">${tab.description}</p>
+  //         <div>
+  //           <img class="kw-tab-list__picture" src="${tab.image.src}" alt="${tab.image.alt}" />
+  //           ${tab.url ? html`
+  //             <a class="kw-tab--list__link kw-tab--list__link--raised  ${classMap({ link_max_width: this.scrollTabs })}"  href="${tab.url.href}" ?download="${!!tab.download}" target="_blank" rel="noopener noreferrer">${tab.url.content}</a>
+  //           ` : html``}
+  //         </div>
+  //       </div>` : html`
+  //       <div class="kw-tab-list__info-container">
+  //         <h2 class="kw-tab-list__title--orange ${classMap({ title_uppercase: this.scrollTabs })}">${tab.title}</h2>
+  //         <p class="kw-tab-list__descrition">${tab.description}</p>
+  //         ${tab.url ? html`
+  //         <a class="kw-tab--list__link kw-tab--list__link--raised" href="${tab.url}" ?download="${!!tab.download}" target="_blank">${tab.linkText}</a>` : html``}
+  //       </div>
+  //     `}
+  //   </div>`);
+  //     index += 1;
+  //   });
+  //   return tabsArr.map((el) => el);
+  // }
 
   render() {
     const { icons = [], tabs = [] } = this.data;
     return html`
-    <div class="kw-tab-list">
-    ${window.innerWidth < 768
-    ? html`
-      ${this.scrollTabs ? html`
-        <div class="kw-tab-list__icons-scroll-tabs" role="tablist" aria-label="¿Qué hacemoshhh?" @keydown="${this._changeTabWithKeyboard}">
+    <div class="kw-tab-list"> 
+    ${this.collapsableTabs && window.innerWidth < 764 ? html`
+        <div class="kw-tab-list__icons" role="tablist" aria-label="¿Qué hacemos?" @keydown="${this._changeTabWithKeyboard}">
+        ${this.drawMobileView(icons, tabs)}
+        </div>` : html` 
+    <div class="kw-tab-list__icons ${classMap({ no_color_button: this.scrollTabs, icons_scroll_tabs: this.scrollTabs })}" role="tablist" aria-label="¿Qué hacemos?" @keydown="${this._changeTabWithKeyboard}">
           ${this.drawIcons(icons)}
         </div>
-        ${this.drawMobileViewScrollTabs(tabs)}
-      ` : html`
-      <div class="kw-tab-list__icons" role="tablist" aria-label="¿Qué hacemos?" @keydown="${this._changeTabWithKeyboard}">
-        ${this.drawMobileView(icons, tabs)}
-      </div>`}
-    `
-    : html` 
-      <div class="kw-tab-list__icons ${classMap({ no_color_button: this.scrollTabs })}" role="tablist" aria-label="¿Qué hacemos?" @keydown="${this._changeTabWithKeyboard}">
-        ${this.drawIcons(icons)}
-      </div>
-      ${this.drawTabs(tabs)}
-      `}
-    </div> 
+        ${this.drawTabs(tabs)}
+    </div> `}
+    
     `;
   }
 }
+
+

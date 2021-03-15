@@ -25,10 +25,15 @@
       .attributes {
         padding-left: 20px;
       }
-
-      tabs-list {
-        width:900px;
+      @media all and (min-width: 768px)  {
+        .tabs-list-container {
+          width: 900px;
+        }
       }
+      .tabs-list-container {
+        width:100%;
+      }
+      
     </style>
   </head>
 
@@ -50,29 +55,29 @@
         </pre>
       </div>
 
-    
-      <tabs-list listen-outside-event="true">
+    <div class="tabs-list-container">
+      <tabs-list collapsible-tabs="true" >
         <div id="icons">
           <button>
-            <img id="buttonImage" src="/demo/assets/person1.svg" alt="" data-content="tab1"/>
+            <img id="buttonImage" src="/demo/assets/person1.svg" alt="abre" data-content="tab1"/>
             <span id="iconTitle">tab1</span>
             <span id="iconSubTitle">subtab1</span>
-            <img id="imageIconSelected" src="/demo/assets/arrow-open.svg" alt="" >
-            <img id="imageIconNotSelected" src="/demo/assets/plus-circle.svg" alt="" >
+            <img id="imageIconSelected" src="/demo/assets/arrow-open.svg" alt="abre" >
+            <img id="imageIconNotSelected" src="/demo/assets/plus-circle.svg" alt="abre" >
           </button>
           <button>
-            <img id="buttonImage" src="/demo/assets/person2.svg" alt="" data-content="tab2"/>
+            <img id="buttonImage" src="/demo/assets/person2.svg" alt="abre" data-content="tab2"/>
             <span id="iconTitle">tab2</span>
             <span id="iconSubTitle">subtab2</span>
-            <img id="imageIconSelected" src="/demo/assets/arrow-open.svg" alt="" >
-            <img id="imageIconNotSelected" src="/demo/assets/plus-circle.svg" alt="" >
+            <img id="imageIconSelected" src="/demo/assets/arrow-open.svg" alt="abre" >
+            <img id="imageIconNotSelected" src="/demo/assets/plus-circle.svg" alt="abre" >
           </button>
           <button>
-            <img id="buttonImage" src="/demo/assets/person3.svg" alt="" data-content="tab3"/>
+            <img id="buttonImage" src="/demo/assets/person3.svg" alt="abre" data-content="tab3"/>
             <span id="iconTitle">tab3</span>
             <span id="iconSubTitle">subtab3</span>
-            <img id="imageIconSelected" src="/demo/assets/arrow-open.svg" alt="" >
-            <img id="imageIconNotSelected" src="/demo/assets/plus-circle.svg" alt="" >
+            <img id="imageIconSelected" src="/demo/assets/arrow-open.svg" alt="abre" >
+            <img id="imageIconNotSelected" src="/demo/assets/plus-circle.svg" alt="abre" >
           </button>
         </div>
         <div id="tabs">
@@ -81,7 +86,7 @@
             <h3 id="subTitle">subtitleTab1</h3>
             <div id="description">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempora veniam eius ratione ab corporis sint mollitia, delectus nisi magni consequatur. Animi voluptatem neque odit ea quam soluta necessitatibus at facilis.</div>
             <img id="image" src="" alt=""/>
-            <a id="url" href="">linktab</a>
+            <a id="url" href="/">linktab</a>
             <div id="download"></div>
           </div>
           <div>
@@ -89,7 +94,7 @@
             <h3 id="subTitle">subtitleTab2</h3>
             <div id="description">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempora veniam eius ratione ab corporis sint mollitia, delectus nisi magni consequatur. Animi voluptatem neque odit ea quam soluta necessitatibus at facilis.</div>
             <img id="image" src="" alt=""/>
-            <a id="url" href="">linktab</a>
+            <a id="url" href="/">linktab</a>
             <div id="download"></div>
           </div>
           <div>
@@ -97,13 +102,14 @@
             <h3 id="subTitle">subtitleTab3</h3>
             <div id="description">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempora veniam eius ratione ab corporis sint mollitia, delectus nisi magni consequatur. Animi voluptatem neque odit ea quam soluta necessitatibus at facilis.</div>
             <img id="image" src="" alt=""/>
-            <a id="url" href="">linktab</a>
+            <a id="url" href="/">linktab</a>
             <div id="download"></div>
           </div>
 
         </div>
 
       </tabs-list>
+    </div>
     </div>
   </body>
 </html>
