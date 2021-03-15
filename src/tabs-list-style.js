@@ -200,18 +200,6 @@ export const TabsListStyles = css`
     color: #4D4D4E;
   }
 
-  .no_color_button .kw-tab-list__button:not([aria-selected="true"]) {
-    filter: grayscale(100%);
-    -webkit-filter: grayscale(100%);
-    -moz-filter: grayscale(100%);
-    -ms-filter: grayscale(100%);
-    -o-filter: grayscale(100%);
-  }
-
-  .no_color_button .kw-tab-list__image {
-    max-height: 140px;
-  }
-
   .icons_scroll_tabs {
     display: flex;
     flex-direction: row;
