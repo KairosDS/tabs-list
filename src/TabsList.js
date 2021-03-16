@@ -34,11 +34,20 @@ export class TabsList extends HTMLChildrenMixin(LitElement) {
         attribute: false,
       },
       /**
-       * Tablist HTML Elements
+       * Img icon selected tab
        * @property
        */
-      tabList: {
+        imgIconSelected: {
         attribute: false,
+        attribute: 'img-icon-selected',
+      },
+      /**
+       * Img icon not selected tab
+       * @property
+       */
+       imgIconNotSelected: {
+        attribute: false,
+        attribute: 'img-icon-not-selected',
       },
       /**
        * Tabs HTML Element
@@ -81,6 +90,15 @@ export class TabsList extends HTMLChildrenMixin(LitElement) {
         type: Boolean,
         attribute: 'listen-outside-event',
       },
+      /**
+       * String  used like a separator to add break line in paragraps
+       * @type String
+       * @property
+       */
+       breakLineSeparator: {
+        type: String,
+        attribute: 'break-line-separator',
+      },
     };
   }
 
@@ -92,11 +110,11 @@ export class TabsList extends HTMLChildrenMixin(LitElement) {
     super();
     this.data = {};
     this.tabFocus = 0;
-    this.tabList = '';
     this.tabs = '';
     this.displayedIcon = 0;
     this.listenOutsideEvent= false;
     this.collapsableTabs = false;
+    this.breakLineSeparator = '';
 
     this.KEYS = {
       left: 37,
@@ -123,26 +141,20 @@ export class TabsList extends HTMLChildrenMixin(LitElement) {
   }
 
   addNewLinetext(descriptionText) {
-    let paragraphs = [];
-    paragraphs = descriptionText.split('\n\n');
-    const firstText = paragraphs[0];
-    const secondText = paragraphs[1];
-    const thirdText = paragraphs[2];
-
-    if (paragraphs.length === 2) {
-      return html`
-      <p class="compact">${firstText}</p>
-      <p class="compact">${secondText}</p>
-      `;
+    let template;
+    if(this.breakLineSeparator){
+      const paragraphs = descriptionText.split(this.breakLineSeparator);
+      console.log(paragraphs)
+      template = paragraphs.map((el)=>{
+      console.log(el)
+      return html`<p class="compact">${el}</p>`
+      })
+    } else {
+      template =  html`<p class="compact">${descriptionText}</p>`
+      return template;
     }
-    if (paragraphs.length === 3) {
-      return html`
-      <p class="compact">${firstText}</p>
-      <p class="compact">${secondText}</p>
-      <p class="compact">${thirdText}</p>
-      `;
-    }
-    return html` <p class="compact">${descriptionText}</p>`;
+    
+    return template;
   }
 
   _changeTabWithKeyboard({ keyCode }) {
@@ -182,7 +194,7 @@ export class TabsList extends HTMLChildrenMixin(LitElement) {
     const grandparent = parent.parentNode;
 
     const idStringSplit = el.id.split('-')
-    this.displayedIcon =parseInt(idStringSplit[1]);
+    this.displayedIcon =parseInt(el.getAttribute('data-index'));
 
     // Remove all current selected tabs
     parent
@@ -203,15 +215,15 @@ export class TabsList extends HTMLChildrenMixin(LitElement) {
       .removeAttribute('hidden');
   }
 
-  displayedTabIcon(icon) {
+  get displayedTabIcon() {
     return html`
-      <img class="kw-tab-list__icon-displayed" src="${icon.src}" alt="">\
+      <img class="kw-tab-list__icon-displayed" src="${this.imgIconSelected}" alt="Selcted">\
   `;
   }
 
- notDisplayedTabIcon(icon) {
+ get notDisplayedTabIcon() {
     return html`
-      <img class="kw-tab-list__icon-displayed"  src="${icon.src}" alt="">\
+      <img class="kw-tab-list__icon-displayed"  src="${this.imgIconNotSelected}" alt="Not selected">\
   `;
   }
 
@@ -219,18 +231,18 @@ export class TabsList extends HTMLChildrenMixin(LitElement) {
     const iconsKeys = Object.keys(icons);
     const iconsArr = [];
     iconsKeys.forEach((iconKey, index) => {
-      const icon = icons[iconKey].buttonImage;
-      const iconSelected = icons[iconKey].imageIconSelected;
-      const iconNotSelected = icons[iconKey].imageIconNotSelected;
+      const icon = icons[iconKey].iconImage;
+      const iconId = icon['data-id']
       iconsArr.push(html`
-        <button role="tab" class="kw-tab-list__button"  aria-selected="${!index}" tabindex="0" aria-controls="panel-${index}" 
-                id="tab-${index}" data-link="${iconKey}"
-                @click="${this._handleChangeWithMouse}">
-          <img src="${icon.src}" alt="${icon.alt}" class="kw-tab-list__image" />
-          <span class="kw-tab-list__title ${classMap({ sub_title_uppercase: this.scrollTabs })}">
-            ${icons[iconKey].iconTitle}
+        <button role="tab" class="kw-tab-list__button"  aria-selected="${!index}" tabindex="0"  
+          aria-controls="panel-${index}" data-index ="${index}"
+          id="${iconId}" data-link="${iconKey}"
+          @click="${this._handleChangeWithMouse}">
+          <img class="kw-tab-list__image" src="${icon.src}" alt="${icon.alt}"/>
+          <span class="kw-tab-list__title">
+            ${icon['data-content']}
           </span>
-            ${index === this.displayedIcon ? this.displayedTabIcon(iconSelected) : this.notDisplayedTabIcon(iconNotSelected)}
+            ${index === this.displayedIcon ? this.displayedTabIcon : this.notDisplayedTabIcon}
         </button>
       `);
     });
@@ -245,22 +257,14 @@ export class TabsList extends HTMLChildrenMixin(LitElement) {
       tabsArr.push(html`
         <div id="panel-${index}" role="tabpanel" class="kw-tab-list__panel  " tabindex="0" ?hidden=${!!index} aria-label="tab-${index}">
           <div class="kw-tab-list__container">
-          ${tab.image ? html`
             <div class="kw-tab-list__info-container ${classMap({ container_max_width: this.scrollTabs })}">
               <h2 class="kw-tab-list__title--orange compact ${classMap({ title_uppercase: this.scrollTabs })}">${tab.title}</h2>
-              ${tab.subTitle ? html` <h3 class="kw-tab-list__subTitle">${tab.subTitle}</h3>` : html``}
+              ${tab.subTitle ? html` <h3 class="kw-tab-list__subTitle">${tab.subTitle}</h3>` : ''}
               ${this.addNewLinetext(tab.description)}
               ${tab.url ? html`
-                <a class="kw-tab--list__link kw-tab--list__link--raised" href="${tab.url.href}" ?download="${!!tab.download}" target="_blank" rel="noopener noreferrer">${tab.url.content}</a>` : html``}
+                <a class="kw-tab--list__link kw-tab--list__link--raised" href="${tab.url.href}" ?download="${!!tab.download}" target="_blank" rel="noopener noreferrer">${tab.url.content}</a>` : ''}
             </div>
-            <img class="kw-tab-list__picture" src="${tab.image.src}" alt="${tab.image.alt}" />` : html`
-            <div class="kw-tab-list__info-container">
-              <h2 class="kw-tab-list__title--orange">${tab.title}</h2>
-              <p class="kw-tab-list__descrition">${tab.description}</p>
-              ${tab.url ? html`
-              <a class="kw-tab--list__link kw-tab--list__link--raised" href="${tab.url}" ?download="${!!tab.download}" target="_blank" rel="noopener noreferrer">${tab.linkText}</a>` : html``}
-            </div>
-            `}
+            ${tab.image ? html`<img class="kw-tab-list__picture" src="${tab.image.src}" alt="${tab.image.alt}" />` : ''}
           </div>
         </div>
       `);
@@ -271,8 +275,7 @@ export class TabsList extends HTMLChildrenMixin(LitElement) {
   drawMobileView(icons, tabs) {
     const iconsKeys = Object.keys(icons);
     const iconsArr = [];
-    let index = 0;
-    iconsKeys.forEach((iconKey) => {
+    iconsKeys.forEach((iconKey, index) => {
       const icon = icons[iconKey].buttonImage;
       const iconSelected = icons[iconKey].imageIconSelected;
       const iconNotSelected = icons[iconKey].imageIconNotSelected;
@@ -292,14 +295,13 @@ export class TabsList extends HTMLChildrenMixin(LitElement) {
               <div class="kw-tab-list__info-container">
                 <p class="compact">${tabs[iconKey].description}</p>
                 <div class= "kw-tab-list__picture">
-                  <img  src="${tabs[iconKey].image.src}" alt="${tabs[iconKey].image.alt}" />
+                  <img src="${tabs[iconKey].image.src}" alt="${tabs[iconKey].image.alt}" />
                 </div>
                   ${tabs[iconKey].url ? html`
                     <a class="kw-tab--list__link kw-tab--list__link--raised" href="${tabs[iconKey].url.href}" ?download="${!!tabs[iconKey].download}" rel="noopener noreferrer">${tabs[iconKey].url.content}</a> ` : ''}
               </div> ` : ''}
           </div>
       `);
-      index += 1;
     });
     return iconsArr.map((el) => el);
   }
@@ -313,12 +315,11 @@ export class TabsList extends HTMLChildrenMixin(LitElement) {
         <div class="kw-tab-list__icons" role="tablist" aria-label="¿Qué hacemos?" @keydown="${this._changeTabWithKeyboard}">
         ${this.drawMobileView(icons, tabs)}
         </div>` : html` 
-    <div class="kw-tab-list__icons ${classMap({ icons_scroll_tabs: this.scrollTabs })}" role="tablist" aria-label="¿Qué hacemos?" @keydown="${this._changeTabWithKeyboard}">
+        <div class="kw-tab-list__icons ${classMap({ icons_scroll_tabs: this.scrollTabs })}" role="tablist" aria-label="¿Qué hacemos?" @keydown="${this._changeTabWithKeyboard}">
           ${this.drawIcons(icons)}
         </div>
         ${this.drawTabs(tabs)}
     </div> `}
-    
     `;
   }
 }

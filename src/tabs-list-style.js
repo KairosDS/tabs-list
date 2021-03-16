@@ -17,6 +17,7 @@ export const TabsListStyles = css`
 
 .kw-tab-list .kw-tab-list__button {
   background: none;
+  cursor: pointer;
   border: none;
   display: flex;
   flex-direction: column;
