@@ -3,8 +3,8 @@ import { css } from 'lit-element';
 export const TabsListStyles = css`
 :host {
   display: block;
-  font-size: 18px; 
-  color: var(--dark-grey);
+  font-size: var(--base-font-size, 38px); 
+  color: var(--main-text-color);
   font-family: var(--main-font-family, 'sans-serif'); 
   font-weight: 300;
 }
@@ -28,7 +28,7 @@ export const TabsListStyles = css`
 }
 
 .kw-tab-list .kw-tab-list__button:not([aria-selected="true"]) {
-  border-top: 4px solid var(--white-color);
+  border-top: 4px solid var(--button-font-color, #FFFFFF);
   opacity: 0.5;
 }
 
@@ -70,9 +70,9 @@ export const TabsListStyles = css`
   text-transform: uppercase;
   color: #4D4D4E;
 }
-.kw-tab-list__title--orange {
+.kw-tab-list__title--main-color {
   color: var(--main-color);
-  font-size: 14px;
+  font-size: 19px;
   font-family: var(--main-font-family, 'sans-serif'); 
   font-weight: 800;
   margin-bottom: 0;
@@ -132,7 +132,7 @@ export const TabsListStyles = css`
       background-color: var(--secondary-color, var(--default-secondary-color));
       border: 1px solid var(--secondary-color, var(--default-secondary-color));
       border-radius: 5px;
-      color: var(--white-color, var(--default-white-color));
+      color: var(--button-font-color, #FFFFFF);
   }
   .kw-tab--list__link--raised:hover {
       background-color: var(--main-color, var(--default-main-color));
@@ -164,10 +164,6 @@ export const TabsListStyles = css`
 
   .link_max_width {
     min-width: 100%;
-  }
-
-  .container_max_width img {
-    width: 100%;
   }
 
   .kw-tab-list__subTitle {
@@ -221,7 +217,7 @@ export const TabsListStyles = css`
   }
 
   .icons_scroll_tabs .kw-tab-list__button:not([aria-selected="true"]) {
-    border-top: 4px solid var(--white-color);
+    border-top: 4px solid var(--button-font-color, #FFFFFF);
     filter: grayscale(100%);
     -webkit-filter: grayscale(100%);
     -moz-filter: grayscale(100%);
@@ -268,9 +264,7 @@ export const TabsListStyles = css`
       margin: 0;
       display: inline-block;
     }
-    .container_max_width {
-      max-width: 50%;
-    }
+
     .kw-tab-list__info-container {
       display: inline-block;
       margin-right: 40px;
@@ -281,6 +275,7 @@ export const TabsListStyles = css`
       flex-direction: row;
       align-items: center;
     }
+
     .kw-tab--list__link {
       margin: 0;
     }

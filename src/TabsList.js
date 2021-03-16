@@ -38,7 +38,6 @@ export class TabsList extends HTMLChildrenMixin(LitElement) {
        * @property
        */
         imgIconSelected: {
-        attribute: false,
         attribute: 'img-icon-selected',
       },
       /**
@@ -46,15 +45,7 @@ export class TabsList extends HTMLChildrenMixin(LitElement) {
        * @property
        */
        imgIconNotSelected: {
-        attribute: false,
         attribute: 'img-icon-not-selected',
-      },
-      /**
-       * Tabs HTML Element
-       * @property
-       */
-      tabs: {
-        attribute: false,
       },
       /**
        * Displayed icon tab HTML Element
@@ -77,7 +68,7 @@ export class TabsList extends HTMLChildrenMixin(LitElement) {
        * @type Bolean
        * @property
        */
-       collapsableTabs: {
+       collapsibleTabs: {
         type: Boolean,
         attribute: 'collapsible-tabs',
       },
@@ -110,10 +101,9 @@ export class TabsList extends HTMLChildrenMixin(LitElement) {
     super();
     this.data = {};
     this.tabFocus = 0;
-    this.tabs = '';
     this.displayedIcon = 0;
     this.listenOutsideEvent= false;
-    this.collapsableTabs = false;
+    this.collapsibleTabs = false;
     this.breakLineSeparator = '';
 
     this.KEYS = {
@@ -142,18 +132,15 @@ export class TabsList extends HTMLChildrenMixin(LitElement) {
 
   addNewLinetext(descriptionText) {
     let template;
-    if(this.breakLineSeparator){
+    if (this.breakLineSeparator) {
       const paragraphs = descriptionText.split(this.breakLineSeparator);
-      console.log(paragraphs)
       template = paragraphs.map((el)=>{
-      console.log(el)
-      return html`<p class="compact">${el}</p>`
-      })
+        return html`<p class="compact">${el}</p>`
+      });
     } else {
-      template =  html`<p class="compact">${descriptionText}</p>`
+        template =  html`<p class="compact">${descriptionText}</p>`
       return template;
-    }
-    
+    } 
     return template;
   }
 
@@ -257,8 +244,8 @@ export class TabsList extends HTMLChildrenMixin(LitElement) {
       tabsArr.push(html`
         <div id="panel-${index}" role="tabpanel" class="kw-tab-list__panel  " tabindex="0" ?hidden=${!!index} aria-label="tab-${index}">
           <div class="kw-tab-list__container">
-            <div class="kw-tab-list__info-container ${classMap({ container_max_width: this.scrollTabs })}">
-              <h2 class="kw-tab-list__title--orange compact ${classMap({ title_uppercase: this.scrollTabs })}">${tab.title}</h2>
+            <div class="kw-tab-list__info-container">
+              <h2 class="kw-tab-list__title--main-color ${classMap({ title_uppercase: this.scrollTabs })}">${tab.title}</h2>
               ${tab.subTitle ? html` <h3 class="kw-tab-list__subTitle">${tab.subTitle}</h3>` : ''}
               ${this.addNewLinetext(tab.description)}
               ${tab.url ? html`
@@ -311,7 +298,7 @@ export class TabsList extends HTMLChildrenMixin(LitElement) {
     const { icons = [], tabs = [] } = this.data;
     return html`
     <div class="kw-tab-list"> 
-    ${this.collapsableTabs && window.innerWidth < 764 ? html`
+    ${this.collapsibleTabs && window.innerWidth < 764 ? html`
         <div class="kw-tab-list__icons" role="tablist" aria-label="¿Qué hacemos?" @keydown="${this._changeTabWithKeyboard}">
         ${this.drawMobileView(icons, tabs)}
         </div>` : html` 

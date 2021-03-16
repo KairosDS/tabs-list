@@ -6,6 +6,18 @@
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
     <script type="module" src="../tabs-list.js"></script>
     <style>
+      :root {
+        --main-font-family: 'Courier New', Courier, monospace;
+        --base-font-size: 18px;
+        --main-color: #0048ff;
+        --main-text-color: #4d4d4e;
+        --dark-grey-button: #575756;
+        --secondary-color: #0E3540;
+        --button-font-color: #FFFFFF;
+        --button-font-family: 'Arial, Helvetica, sans-serif';
+        --button-font-size: 1rem; /* 16px */
+        --button-line-height: 1.1;
+      }
       .blocks {
         display:flex;
         flex-direction:row;
@@ -24,7 +36,7 @@
       }
       .attributes {
         padding-left: 20px;
-      }
+      } 
       @media all and (min-width: 768px)  {
         .tabs-list-container {
           margin: 0 auto;
@@ -63,18 +75,18 @@
             <img id="iconImage" src="/demo/assets/person1.svg" alt="abre" data-content="tab1" data-id="tab-1"/>
           </button>
           <button>
-            <img id="iconImage" src="/demo/assets/person2.svg" alt="abre" data-content="tab2" data-id="tab-2"/>
+            <img id="iconImage" src="/demo/assets/person1.svg" alt="abre" data-content="tab2" data-id="tab-2"/>
           </button>
           <button>
-            <img id="iconImage" src="/demo/assets/person3.svg" alt="abre" data-content="tab3" data-id="tab-3"/>
+            <img id="iconImage" src="/demo/assets/person1.svg" alt="abre" data-content="tab3" data-id="tab-3"/>
           </button>
         </div>
         <div id="tabs">
           <div>
             <h3 id="title">titletab1</h3>
             <h3 id="subTitle">subtitleTab1</h3>
-            <div id="description">Lorem ipsum, dolor sit amet consectetur adipisicing elit.; Tempora veniam eius ratione ab corporis sint mollitia, delectus nisi magni consequatur. Animi voluptatem neque odit ea quam soluta necessitatibus at facilis.</div>
-            <img id="image" src="/demo/assets/social-media-5187243_640.png" alt=""/>
+            <div id="description">Lorem ipsum, dolor sit amet consectetur adipisicing elit.; Tempora veniam eius ratione ab corporis sint mollitia, delectus nisi magni consequatur. Animi voluptatem neque odit ea quam soluta necessitatibus at facilis.; Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor rerum perferendis, nihil molestias consectetur illo enim perspiciatis molestiae mollitia quis veritatis suscipit iste necessitatibus dolorum hic fugit, sunt ut minus.</div>
+            <img id="image" src="https://picsum.photos/seed/picsum/500/400" alt=""/>
             <a id="url" href="/">linktab</a>
             <div id="download"></div>
           </div>
@@ -82,7 +94,7 @@
             <h3 id="title">titletab2</h3>
             <h3 id="subTitle">subtitleTab2</h3>
             <div id="description">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempora veniam eius ratione ab corporis sint mollitia, delectus nisi magni consequatur.; Animi voluptatem neque odit ea quam soluta necessitatibus at facilis.</div>
-            <img id="image" src="" alt=""/>
+            <img id="image" src="https://picsum.photos/seed/picsum/100/200" alt=""/>
             <a id="url" href="/">linktab</a>
             <div id="download"></div>
           </div>
@@ -90,13 +102,50 @@
             <h3 id="title">titletab3</h3>
             <h3 id="subTitle">subtitleTab3</h3>
             <div id="description">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempora veniam eius ratione ab corporis sint mollitia, delectus nisi magni consequatur. Animi voluptatem neque odit ea quam soluta necessitatibus at facilis.</div>
-            <img id="image" src="/demo/assets/gears-5193383_1280.png" alt=""/>
+            <img id="image" src="" alt=""/>
             <a id="url" href="/">linktab</a>
             <div id="download"></div>
           </div>
-
         </div>
-
+      </tabs-list>
+      <tabs-list collapsible-tabs="true" img-icon-selected="/demo/assets/arrow-open.svg" img-icon-not-selected="/demo/assets/plus-circle.svg" break-line-separator = ";" scroll-tabs="true" >
+        <div id="icons">
+          <button>
+            <img id="iconImage" src="/demo/assets/person1.svg" alt="abre" data-content="tab1" data-id="tab-1"/>
+          </button>
+          <button>
+            <img id="iconImage" src="/demo/assets/person1.svg" alt="abre" data-content="tab2" data-id="tab-2"/>
+          </button>
+          <button>
+            <img id="iconImage" src="/demo/assets/person1.svg" alt="abre" data-content="tab3" data-id="tab-3"/>
+          </button>
+        </div>
+        <div id="tabs">
+          <div>
+            <h3 id="title">titletab1</h3>
+            <h3 id="subTitle">subtitleTab1</h3>
+            <div id="description">Lorem ipsum, dolor sit amet consectetur adipisicing elit.; Tempora veniam eius ratione ab corporis sint mollitia, delectus nisi magni consequatur. Animi voluptatem neque odit ea quam soluta necessitatibus at facilis.; Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor rerum perferendis, nihil molestias consectetur illo enim perspiciatis molestiae mollitia quis veritatis suscipit iste necessitatibus dolorum hic fugit, sunt ut minus.</div>
+            <img id="image" src="https://picsum.photos/seed/picsum/500/400" alt=""/>
+            <a id="url" href="/">linktab</a>
+            <div id="download"></div>
+          </div>
+          <div>
+            <h3 id="title">titletab2</h3>
+            <h3 id="subTitle">subtitleTab2</h3>
+            <div id="description">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempora veniam eius ratione ab corporis sint mollitia, delectus nisi magni consequatur.; Animi voluptatem neque odit ea quam soluta necessitatibus at facilis.</div>
+            <img id="image" src="https://picsum.photos/seed/picsum/100/200" alt=""/>
+            <a id="url" href="/">linktab</a>
+            <div id="download"></div>
+          </div>
+          <div>
+            <h3 id="title">titletab3</h3>
+            <h3 id="subTitle">subtitleTab3</h3>
+            <div id="description">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempora veniam eius ratione ab corporis sint mollitia, delectus nisi magni consequatur. Animi voluptatem neque odit ea quam soluta necessitatibus at facilis.</div>
+            <img id="image" src="" alt=""/>
+            <a id="url" href="/">linktab</a>
+            <div id="download"></div>
+          </div>
+        </div>
       </tabs-list>
     </div>
     </div>
