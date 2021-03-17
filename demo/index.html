@@ -9,14 +9,18 @@
       :root {
         --main-font-family: 'Courier New', Courier, monospace;
         --base-font-size: 18px;
-        --main-color: #0048ff;
+        --main-color: #ff00aa;
         --main-text-color: #4d4d4e;
-        --dark-grey-button: #575756;
+        --secondary-text-color: #575756;
         --secondary-color: #0E3540;
         --button-font-color: #FFFFFF;
         --button-font-family: 'Arial, Helvetica, sans-serif';
-        --button-font-size: 1rem; /* 16px */
+        --button-font-size: 1rem;
         --button-line-height: 1.1;
+        --button-tab-width-mobile: 150px;
+        --button-tab-width-desktop: 250px;
+        --button-img-tab-height: 100px;
+
       }
       .blocks {
         display:flex;
@@ -37,6 +41,16 @@
       .attributes {
         padding-left: 20px;
       } 
+
+      .tabs-with-scroll {
+        margin-top: 50px;
+        margin-bottom: 50px;
+      }
+      .tabs-with-scroll h2{
+        font-family: 'Courier New', Courier, monospace;
+        color: white;
+        background-color: var(--dark-grey-button);
+      }
       @media all and (min-width: 768px)  {
         .tabs-list-container {
           margin: 0 auto;
@@ -69,6 +83,8 @@
       </div>
 
     <div class="tabs-list-container">
+      <div class="tabs-with-scroll">
+        <h2>EJEMPLO TABS</h2>
       <tabs-list collapsible-tabs="true" img-icon-selected="/demo/assets/arrow-open.svg" img-icon-not-selected="/demo/assets/plus-circle.svg" break-line-separator = ";" >
         <div id="icons">
           <button>
@@ -84,7 +100,6 @@
         <div id="tabs">
           <div>
             <h3 id="title">titletab1</h3>
-            <h3 id="subTitle">subtitleTab1</h3>
             <div id="description">Lorem ipsum, dolor sit amet consectetur adipisicing elit.; Tempora veniam eius ratione ab corporis sint mollitia, delectus nisi magni consequatur. Animi voluptatem neque odit ea quam soluta necessitatibus at facilis.; Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor rerum perferendis, nihil molestias consectetur illo enim perspiciatis molestiae mollitia quis veritatis suscipit iste necessitatibus dolorum hic fugit, sunt ut minus.</div>
             <img id="image" src="https://picsum.photos/seed/picsum/500/400" alt=""/>
             <a id="url" href="/">linktab</a>
@@ -92,7 +107,6 @@
           </div>
           <div>
             <h3 id="title">titletab2</h3>
-            <h3 id="subTitle">subtitleTab2</h3>
             <div id="description">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempora veniam eius ratione ab corporis sint mollitia, delectus nisi magni consequatur.; Animi voluptatem neque odit ea quam soluta necessitatibus at facilis.</div>
             <img id="image" src="https://picsum.photos/seed/picsum/100/200" alt=""/>
             <a id="url" href="/">linktab</a>
@@ -100,7 +114,6 @@
           </div>
           <div>
             <h3 id="title">titletab3</h3>
-            <h3 id="subTitle">subtitleTab3</h3>
             <div id="description">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempora veniam eius ratione ab corporis sint mollitia, delectus nisi magni consequatur. Animi voluptatem neque odit ea quam soluta necessitatibus at facilis.</div>
             <img id="image" src="" alt=""/>
             <a id="url" href="/">linktab</a>
@@ -108,16 +121,19 @@
           </div>
         </div>
       </tabs-list>
-      <tabs-list collapsible-tabs="true" img-icon-selected="/demo/assets/arrow-open.svg" img-icon-not-selected="/demo/assets/plus-circle.svg" break-line-separator = ";" scroll-tabs="true" >
+      <div>
+      <div class="tabs-with-scroll">
+        <h2>EJEMPLO TABS CON SCROLL EN MÓVIL</h2>
+      <tabs-list img-icon-selected="/demo/assets/arrow-open.svg" img-icon-not-selected="/demo/assets/plus-circle.svg" break-line-separator = ";" scroll-tabs="true" >
         <div id="icons">
           <button>
             <img id="iconImage" src="/demo/assets/person1.svg" alt="abre" data-content="tab1" data-id="tab-1"/>
           </button>
           <button>
-            <img id="iconImage" src="/demo/assets/person1.svg" alt="abre" data-content="tab2" data-id="tab-2"/>
+            <img id="iconImage" src="/demo/assets/atom-1472657_640.png" alt="abre" data-content="tab2" data-id="tab-2"/>
           </button>
           <button>
-            <img id="iconImage" src="/demo/assets/person1.svg" alt="abre" data-content="tab3" data-id="tab-3"/>
+            <img id="iconImage" src="/demo/assets/pokemon.png" alt="abre" data-content="tab3" data-id="tab-3"/>
           </button>
         </div>
         <div id="tabs">
@@ -147,6 +163,7 @@
           </div>
         </div>
       </tabs-list>
+    </div>
     </div>
     </div>
   </body>

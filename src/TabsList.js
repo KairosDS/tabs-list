@@ -242,7 +242,7 @@ export class TabsList extends HTMLChildrenMixin(LitElement) {
     tabsKeys.forEach((tabKey, index) => {
       const tab = tabs[tabKey];
       tabsArr.push(html`
-        <div id="panel-${index}" role="tabpanel" class="kw-tab-list__panel  " tabindex="0" ?hidden=${!!index} aria-label="tab-${index}">
+        <div id="panel-${index}" role="tabpanel" class="kw-tab-list__panel" tabindex="0" ?hidden=${!!index} aria-label="tab-${index}">
           <div class="kw-tab-list__container">
             <div class="kw-tab-list__info-container">
               <h2 class="kw-tab-list__title--main-color ${classMap({ title_uppercase: this.scrollTabs })}">${tab.title}</h2>
@@ -263,29 +263,27 @@ export class TabsList extends HTMLChildrenMixin(LitElement) {
     const iconsKeys = Object.keys(icons);
     const iconsArr = [];
     iconsKeys.forEach((iconKey, index) => {
-      const icon = icons[iconKey].buttonImage;
-      const iconSelected = icons[iconKey].imageIconSelected;
-      const iconNotSelected = icons[iconKey].imageIconNotSelected;
+      const icon = icons[iconKey].iconImage;
+      const iconId = icon['data-id']
       iconsArr.push(html`
           <button role="tab" class="kw-tab-list__button" aria-selected="${!index}" tabindex="0" aria-controls="panel-${index}" 
-              id="${icons[iconKey].iconTitle}" 
+              id="${iconId}" 
               data-link="${iconKey}"
+              data-index="${index}"
               @click="${this._handleChangeWithMouse}">
             <img src="${icon.src}" alt="${icon.alt}" class="kw-tab-list__image" />
             <span class="kw-tab-list__title">
               ${icon['data-content']}
             </span>
-            ${icons[iconKey].iconTitle === this.displayedIcon ? this.displayedTabIcon(iconSelected) : this.notDisplayedTabIcon(iconNotSelected)}
+            ${index === this.displayedIcon ? this.displayedTabIcon : this.notDisplayedTabIcon}
           </button>
           <div id="panel-${index}" role="tabpanel" class="kw-tab-list__panel" tabindex="0" ?hidden=${!!index} aria-label="tab-${index}">
             ${tabs[iconKey].image ? html`
               <div class="kw-tab-list__info-container">
-                <p class="compact">${tabs[iconKey].description}</p>
-                <div class= "kw-tab-list__picture">
-                  <img src="${tabs[iconKey].image.src}" alt="${tabs[iconKey].image.alt}" />
-                </div>
+              ${this.addNewLinetext(tabs[iconKey].description)}
+              ${tabs[iconKey].image ? html`<img class="kw-tab-list__picture" src="${tabs[iconKey].image.src}" alt="${tabs[iconKey].image.alt}" />` : ''}
                   ${tabs[iconKey].url ? html`
-                    <a class="kw-tab--list__link kw-tab--list__link--raised" href="${tabs[iconKey].url.href}" ?download="${!!tabs[iconKey].download}" rel="noopener noreferrer">${tabs[iconKey].url.content}</a> ` : ''}
+                    <a class="kw-tab--list__link kw-tab--list__link--raised link__collapsible" href="${tabs[iconKey].url.href}" ?download="${!!tabs[iconKey].download}" rel="noopener noreferrer">${tabs[iconKey].url.content}</a> ` : ''}
               </div> ` : ''}
           </div>
       `);
