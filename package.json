@@ -18,7 +18,8 @@
   },
   "homepage": "https://github.com/KairosDS Team/tabs-list",
   "dependencies": {
-    "lit-element": "^2.4.0"
+    "lit-element": "^2.4.0",
+    "sinon": "^9.2.4"
   },
   "devDependencies": {
     "@babel/core": "^7.12.10",

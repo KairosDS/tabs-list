@@ -177,10 +177,10 @@ export class TabsList extends HTMLChildrenMixin(LitElement) {
     if (this.listenOutsideEvent) {
       window.location.hash = `#${el.id}`;
     }
+  
     const parent = el.parentNode;
     const grandparent = parent.parentNode;
 
-    const idStringSplit = el.id.split('-')
     this.displayedIcon =parseInt(el.getAttribute('data-index'));
 
     // Remove all current selected tabs
@@ -204,13 +204,13 @@ export class TabsList extends HTMLChildrenMixin(LitElement) {
 
   get displayedTabIcon() {
     return html`
-      <img class="kw-tab-list__icon-displayed" src="${this.imgIconSelected}" alt="Selcted">\
+      <img class="tab-list__icon-displayed" src="${this.imgIconSelected}" alt="Selcted">\
   `;
   }
 
  get notDisplayedTabIcon() {
     return html`
-      <img class="kw-tab-list__icon-displayed"  src="${this.imgIconNotSelected}" alt="Not selected">\
+      <img class="tab-list__icon-displayed"  src="${this.imgIconNotSelected}" alt="Not selected">\
   `;
   }
 
@@ -221,12 +221,12 @@ export class TabsList extends HTMLChildrenMixin(LitElement) {
       const icon = icons[iconKey].iconImage;
       const iconId = icon['data-id']
       iconsArr.push(html`
-        <button role="tab" class="kw-tab-list__button"  aria-selected="${!index}" tabindex="0"  
+        <button role="tab" class="tab-list__button"  aria-selected="${!index}" tabindex="0"  
           aria-controls="panel-${index}" data-index ="${index}"
           id="${iconId}" data-link="${iconKey}"
           @click="${this._handleChangeWithMouse}">
-          <img class="kw-tab-list__image" src="${icon.src}" alt="${icon.alt}"/>
-          <span class="kw-tab-list__title">
+          <img class="tab-list__image" src="${icon.src}" alt="${icon.alt}"/>
+          <span class="tab-list__title">
             ${icon['data-content']}
           </span>
             ${index === this.displayedIcon ? this.displayedTabIcon : this.notDisplayedTabIcon}
@@ -242,16 +242,16 @@ export class TabsList extends HTMLChildrenMixin(LitElement) {
     tabsKeys.forEach((tabKey, index) => {
       const tab = tabs[tabKey];
       tabsArr.push(html`
-        <div id="panel-${index}" role="tabpanel" class="kw-tab-list__panel" tabindex="0" ?hidden=${!!index} aria-label="tab-${index}">
-          <div class="kw-tab-list__container">
-            <div class="kw-tab-list__info-container">
-              <h2 class="kw-tab-list__title--main-color ${classMap({ title_uppercase: this.scrollTabs })}">${tab.title}</h2>
-              ${tab.subTitle ? html` <h3 class="kw-tab-list__subTitle">${tab.subTitle}</h3>` : ''}
+        <div id="panel-${index}" role="tabpanel" class="tab-list__panel" tabindex="0" ?hidden=${!!index} aria-label="tab-${index}">
+          <div class="tab-list__container">
+            <div class="tab-list__info-container">
+              <h2 class="tab-list__title--main-color ${classMap({ title_uppercase: this.scrollTabs })}">${tab.title}</h2>
+              ${tab.subTitle ? html` <h3 class="tab-list__subTitle">${tab.subTitle}</h3>` : ''}
               ${this.addNewLinetext(tab.description)}
               ${tab.url ? html`
-                <a class="kw-tab--list__link kw-tab--list__link--raised" href="${tab.url.href}" ?download="${!!tab.download}" target="_blank" rel="noopener noreferrer">${tab.url.content}</a>` : ''}
+                <a class="tab--list__link tab--list__link--raised" href="${tab.url.href}" ?download="${!!tab.download}" target="_blank" rel="noopener noreferrer">${tab.url.content}</a>` : ''}
             </div>
-            ${tab.image ? html`<img class="kw-tab-list__picture" src="${tab.image.src}" alt="${tab.image.alt}" />` : ''}
+            ${tab.image ? html`<img class="tab-list__picture" src="${tab.image.src}" alt="${tab.image.alt}" />` : ''}
           </div>
         </div>
       `);
@@ -266,24 +266,24 @@ export class TabsList extends HTMLChildrenMixin(LitElement) {
       const icon = icons[iconKey].iconImage;
       const iconId = icon['data-id']
       iconsArr.push(html`
-          <button role="tab" class="kw-tab-list__button" aria-selected="${!index}" tabindex="0" aria-controls="panel-${index}" 
+          <button role="tab" class="tab-list__button" aria-selected="${!index}" tabindex="0" aria-controls="panel-${index}" 
               id="${iconId}" 
               data-link="${iconKey}"
               data-index="${index}"
               @click="${this._handleChangeWithMouse}">
-            <img src="${icon.src}" alt="${icon.alt}" class="kw-tab-list__image" />
-            <span class="kw-tab-list__title">
+            <img src="${icon.src}" alt="${icon.alt}" class="tab-list__image" />
+            <span class="tab-list__title">
               ${icon['data-content']}
             </span>
             ${index === this.displayedIcon ? this.displayedTabIcon : this.notDisplayedTabIcon}
           </button>
-          <div id="panel-${index}" role="tabpanel" class="kw-tab-list__panel" tabindex="0" ?hidden=${!!index} aria-label="tab-${index}">
+          <div id="panel-${index}" role="tabpanel" class="tab-list__panel" tabindex="0" ?hidden=${!!index} aria-label="tab-${index}">
             ${tabs[iconKey].image ? html`
-              <div class="kw-tab-list__info-container">
+              <div class="tab-list__info-container">
               ${this.addNewLinetext(tabs[iconKey].description)}
-              ${tabs[iconKey].image ? html`<img class="kw-tab-list__picture" src="${tabs[iconKey].image.src}" alt="${tabs[iconKey].image.alt}" />` : ''}
+              ${tabs[iconKey].image ? html`<img class="tab-list__picture" src="${tabs[iconKey].image.src}" alt="${tabs[iconKey].image.alt}" />` : ''}
                   ${tabs[iconKey].url ? html`
-                    <a class="kw-tab--list__link kw-tab--list__link--raised link__collapsible" href="${tabs[iconKey].url.href}" ?download="${!!tabs[iconKey].download}" rel="noopener noreferrer">${tabs[iconKey].url.content}</a> ` : ''}
+                    <a class="tab--list__link tab--list__link--raised link__collapsible" href="${tabs[iconKey].url.href}" ?download="${!!tabs[iconKey].download}" rel="noopener noreferrer">${tabs[iconKey].url.content}</a> ` : ''}
               </div> ` : ''}
           </div>
       `);
@@ -295,12 +295,12 @@ export class TabsList extends HTMLChildrenMixin(LitElement) {
   render() {
     const { icons = [], tabs = [] } = this.data;
     return html`
-    <div class="kw-tab-list"> 
+    <div class="tabs-list"> 
     ${this.collapsibleTabs && window.innerWidth < 764 ? html`
-        <div class="kw-tab-list__icons" role="tablist" aria-label="¿Qué hacemos?" @keydown="${this._changeTabWithKeyboard}">
+        <div class="tab-list__icons tab-list__icons-mobile-view" role="tablist" aria-label="¿Qué hacemos?" @keydown="${this._changeTabWithKeyboard}">
         ${this.drawMobileView(icons, tabs)}
         </div>` : html` 
-        <div class="kw-tab-list__icons ${classMap({ icons_scroll_tabs: this.scrollTabs })}" role="tablist" aria-label="¿Qué hacemos?" @keydown="${this._changeTabWithKeyboard}">
+        <div class="tab-list__icons ${classMap({ icons_scroll_tabs: this.scrollTabs })}" role="tablist" aria-label="¿Qué hacemos?" @keydown="${this._changeTabWithKeyboard}">
           ${this.drawIcons(icons)}
         </div>
         ${this.drawTabs(tabs)}

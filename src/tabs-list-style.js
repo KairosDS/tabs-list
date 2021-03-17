@@ -9,13 +9,13 @@ export const TabsListStyles = css`
   font-weight: 300;
 }
 
-.kw-tab-list__icons {
+.tab-list__icons {
   display: flex;
   flex-direction: column;
   margin-bottom: 20px;
 }
 
-.kw-tab-list__button {
+.tab-list__button {
   background: none;
   cursor: pointer;
   border: none;
@@ -28,27 +28,27 @@ export const TabsListStyles = css`
   min-width: var(--button-tab-width-mobile, 150px);
 }
 
-.kw-tab-list__button:not([aria-selected="true"]) {
+.tab-list__button:not([aria-selected="true"]) {
   border-top: 4px solid var(--button-font-color, #FFFFFF);
   opacity: 0.5;
 }
 
-.kw-tab-list__button[aria-selected="true"],
-.kw-tab-list__button:hover,
-.kw-tab-list__button:focus {
+.tab-list__button[aria-selected="true"],
+.tab-list__button:hover,
+.tab-list__button:focus {
   outline: 0;
 }
 
-.kw-tab-list__image {
+.tab-list__image {
   padding: 10px;
   height: var(--button-img-tab-height, 150px);
 }
 
-.kw-tab-list__title {
+.tab-list__title {
   max-width: 155px;
   margin-bottom: 12px;
   font-size: 19px;
-  color: var(--secondary-text-color, #575756);
+  color: var(--secondary-text-color, #000000);
   font-family: var(--main-font-family, 'sans-serif'); 
   font-weight: 800;
 }
@@ -64,45 +64,45 @@ export const TabsListStyles = css`
   letter-spacing: 5px;
 }
 
-.kw-tab-list__title--main-color {
-  color: var(--main-color, #0048ff);
+.tab-list__title--main-color {
+  color: var(--main-color, #046b99);
   font-size: 19px;
   font-family: var(--main-font-family, 'sans-serif'); 
   font-weight: 800;
   margin-bottom: 0;
 }
 
-.kw-tab-list__info-container {
+.tab-list__info-container {
   padding-bottom: 27px;
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
-.kw-tab-list .kw-tab-list__panel {
+.tabs-list .tab-list__panel {
   position: relative;
   margin-bottom: 20px;
 }
 
-.kw-tab-list__picture {
+.tab-list__picture {
   max-height: 280px;
   display: flex;
   justify-content: center;
   margin: 0 auto;
 }
 
-.kw-tab-list .kw-tab-list__panel:focus {
+.tabs-list .tab-list__panel:focus {
   border-bottom: 4px solid var(--main-color, #0048ff);
   outline: 0;
 }
 
-.kw-tab-list__icon-displayed {
+.tab-list__icon-displayed {
   height: 30px;
   width: 30px;
 }
 
 
-.kw-tab--list__link {
+.tab--list__link {
   width: 100%;
   box-sizing: border-box;
   background-color: inherit;
@@ -127,25 +127,25 @@ export const TabsListStyles = css`
     margin-right: auto;
   }
 
-  .kw-tab--list__link--raised {
+  .tab--list__link--raised {
     background-color: var(--secondary-color, #0E3540);
     border: 1px solid var(--secondary-color, #0E3540);
     border-radius: 5px;
     color: var(--button-font-color, #FFFFFF);
   }
 
-  .kw-tab--list__link--raised:hover {
+  .tab--list__link--raised:hover {
     background-color: var(--main-color, #0048ff);
     border-color: var(--main-color, #0048ff);
   }
 
-  .kw-tab--list__link--raised:focus {
+  .tab--list__link--raised:focus {
     background-color: var(--main-color, #0048ff);
     border-color: var( --secondary-text-color, #575756);
     outline: none;
   }
 
-  .kw-tab-list__subTitle {
+  .tab-list__subTitle {
     margin-top: 0;
     margin-bottom: 0;
     font-size: 24px;
@@ -161,19 +161,19 @@ export const TabsListStyles = css`
     overflow-x: scroll;
   }
 
-  .icons_scroll_tabs .kw-tab-list__button {
+  .icons_scroll_tabs .tab-list__button {
     min-width: var(--button-tab-width-mobile, 150px);
     margin-left: 20px;
     margin-right: 20px;
   }
 
-  .icons_scroll_tabs .kw-tab-list__button[aria-selected="true"],
-  .icons_scroll_tabs .kw-tab-list__button:hover,
-  .icons_scroll_tabs .kw-tab-list__button:focus {
+  .icons_scroll_tabs .tab-list__button[aria-selected="true"],
+  .icons_scroll_tabs .tab-list__button:hover,
+  .icons_scroll_tabs .tab-list__button:focus {
     border-top: 4px solid var(--main-color, #0048ff);
     outline: 0;
   }
-  .icons_scroll_tabs .kw-tab-list__button:not([aria-selected="true"]) {
+  .icons_scroll_tabs .tab-list__button:not([aria-selected="true"]) {
     border-top: none;
     filter: grayscale(100%);
     -webkit-filter: grayscale(100%);
@@ -183,50 +183,50 @@ export const TabsListStyles = css`
   }
 
   @media all and (min-width: 768px) {
-    .kw-tab-list__button {
-      width: var(--button-tab-width-desktop, 250px)
+    .tab-list__button {
+      width: var(--button-tab-width-desktop, 250px);
     }
 
-    .kw-tab-list__title--orange {
+    .tab-list__title--orange {
       font-size: 19px;
     }
 
-    .kw-tab-list .kw-tab-list__icons {
+    .tab-list__icons {
       flex-direction: row;
       justify-content: space-around;
       align-items: flex-start;
     }
     
-    .kw-tab-list .kw-tab-list__panel {
+    .tabs-list .tab-list__panel {
       margin-bottom: 0;
     }
 
-    .kw-tab-list .kw-tab-list__button[aria-selected="true"],
-    .kw-tab-list .kw-tab-list__button:hover,
-    .kw-tab-list .kw-tab-list__button:focus {
+    .tabs-list .tab-list__button[aria-selected="true"],
+    .tabs-list .tab-list__button:hover,
+    .tabs-list .tab-list__button:focus {
       border-top: 4px solid var(--main-color, #0048ff);
       outline: 0;
     }
 
-    .kw-tab-list__picture {
+    .tab-list__picture {
       padding-left: 75px;
       margin: 0;
       display: inline-block;
     }
 
-    .kw-tab-list__info-container {
+    .tab-list__info-container {
       display: inline-block;
       margin-right: 40px;
       
     }
     
-    .kw-tab-list__container {
+    .tab-list__container {
       display: flex;
       flex-direction: row;
       align-items: center;
     }
 
-    .kw-tab--list__link {
+    .tab--list__link {
       margin: 0;
       width: fit-content;
     }
@@ -237,12 +237,12 @@ export const TabsListStyles = css`
       line-height: 31px;
     }
 
-    .icons_scroll_tabs .kw-tab-list__button {
+    .icons_scroll_tabs .tab-list__button {
       min-width:  var(--button-tab-width-desktop, 230px);
       margin-right : 0;
     }
 
-    .panel__scrollTabs .kw-tab-list__picture {
+    .panel__scrollTabs .tab-list__picture {
       max-height: 100%;
       display: inline-block;
       padding: 0;
