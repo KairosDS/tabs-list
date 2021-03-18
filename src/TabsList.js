@@ -74,11 +74,11 @@ export class TabsList extends HTMLChildrenMixin(LitElement) {
       },
       /**
        * Bolean if icons tabs has scroll
-       * @type Bolean
+       * @type Syting
        * @property
        */
        listenOutsideEvent: {
-        type: Boolean,
+        type: String,
         attribute: 'listen-outside-event',
       },
       /**
@@ -102,7 +102,7 @@ export class TabsList extends HTMLChildrenMixin(LitElement) {
     this.data = {};
     this.tabFocus = 0;
     this.displayedIcon = 0;
-    this.listenOutsideEvent= false;
+    this.listenOutsideEvent= '';
     this.collapsibleTabs = false;
     this.breakLineSeparator = '';
 
@@ -110,21 +110,21 @@ export class TabsList extends HTMLChildrenMixin(LitElement) {
       left: 37,
       right: 39,
     };
-    this._listenEventfromNav = this._listenEventfromNav.bind(this);
+    this._listenEventfromOutside = this._listenEventfromOutside.bind(this);
   }
 
   connectedCallback() {
     super.connectedCallback();
     this.data = this._HTMLChildren();
-    document.addEventListener('item:selected', this._listenEventfromNav);
+    document.addEventListener(`${this.listenOutsideEvent}`, this._listenEventfromOutside);
   }
 
   disconnectedCallback() {
     super.disconnectedCallback();
-    document.removeEventListener('item:selected', this._listenEventfromNav);
+    document.removeEventListener(`${this.listenOutsideEvent}`, this._listenEventfromOutside);
   }
 
-  _listenEventfromNav(e) {
+  _listenEventfromOutside(e) {
     const nameLink = e.detail.name.toLowerCase();
     const element = this.shadowRoot.querySelector(`[data-link="${nameLink}"]`);
     this._changeTab(element);
@@ -158,12 +158,13 @@ export class TabsList extends HTMLChildrenMixin(LitElement) {
         }
       } else {
         this.tabFocus -= 1;
+        
         // If we're at the start, move to the end
         if (this.tabFocus < 0) {
           this.tabFocus = ObjectTabsKeys - 1;
         }
       }
-      const tabSelectFocus = this.shadowRoot.querySelector(`#tab-${this.tabFocus}`)
+      const tabSelectFocus = this.shadowRoot.querySelector(`[data-index="${this.tabFocus}"]`)
       this._changeTab(tabSelectFocus)
     }
   }
