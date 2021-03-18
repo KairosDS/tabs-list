@@ -117,6 +117,7 @@ export class TabsList extends HTMLChildrenMixin(LitElement) {
     super.connectedCallback();
     this.data = this._HTMLChildren();
     document.addEventListener(`${this.listenOutsideEvent}`, this._listenEventfromOutside);
+    
   }
 
   disconnectedCallback() {
@@ -154,7 +155,6 @@ export class TabsList extends HTMLChildrenMixin(LitElement) {
         // If we're at the end, go to the start
         if (this.tabFocus >= ObjectTabsKeys) {
           this.tabFocus = 0;
-          
         }
       } else {
         this.tabFocus -= 1;
@@ -175,10 +175,10 @@ export class TabsList extends HTMLChildrenMixin(LitElement) {
 
  
   _changeTab(el) {
+
     if (this.listenOutsideEvent) {
       window.location.hash = `#${el.id}`;
     }
-  
     const parent = el.parentNode;
     const grandparent = parent.parentNode;
 
@@ -224,7 +224,7 @@ export class TabsList extends HTMLChildrenMixin(LitElement) {
       iconsArr.push(html`
         <button role="tab" class="tab-list__button"  aria-selected="${!index}" tabindex="0"  
           aria-controls="panel-${index}" data-index ="${index}"
-          id="${iconId}" data-link="${iconKey}"
+          id="${iconId}" data-link="${iconId}"
           @click="${this._handleChangeWithMouse}">
           <img class="tab-list__image" src="${icon.src}" alt="${icon.alt}"/>
           <span class="tab-list__title">

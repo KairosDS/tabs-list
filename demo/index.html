@@ -4,6 +4,7 @@
     <title>tabs-list demo</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
+    
     <script type="module" src="../tabs-list.js"></script>
     <style>
       :root {
@@ -81,11 +82,11 @@
           </ul>
         </pre>
       </div>
-
+      <div id="buttonCustomEvent">Envio</div>
     <div class="tabs-list-container">
       <div class="tabs-with-scroll">
         <h2>EJEMPLO TABS</h2>
-      <tabs-list collapsible-tabs="true" img-icon-selected="/demo/assets/arrow-open.svg" img-icon-not-selected="/demo/assets/plus-circle.svg" break-line-separator = ";" >
+      <tabs-list listen-outside-event="item:selected" collapsible-tabs="true" img-icon-selected="/demo/assets/arrow-open.svg" img-icon-not-selected="/demo/assets/plus-circle.svg" break-line-separator = ";" >
         <div id="icons">
           <button>
             <img id="iconImage" src="/demo/assets/person1.svg" alt="abre" data-content="tab1" data-id="tab-1"/>
@@ -166,5 +167,23 @@
     </div>
     </div>
     </div>
+    <script>
+      const buttonMessage = document.getElementById('buttonCustomEvent');
+      console.log('index')
+        //const detail = { name: 'tab-2' };
+        const detail = { name: window.location.hash.slice(1) };
+
+        function eventSend (){
+          const event = new CustomEvent('item:selected', {
+          detail,
+          bubbles: true,
+          composed: true,
+        });
+        console.log(event)
+        return event
+        }
+        setTimeout(()=>{ document.dispatchEvent(eventSend())}, 1000)
+       
+      </script>
   </body>
 </html>
