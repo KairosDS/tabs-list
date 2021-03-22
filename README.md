@@ -2,7 +2,8 @@
 
 Lit-Element web component tabs list.
 
-The content is the html code inside the component. the following structure should be used with the same id:
+
+The data is passed using the content of the html code inside the component. The following structure should be used with the same id names:
 
 ```
 <tabs-list>

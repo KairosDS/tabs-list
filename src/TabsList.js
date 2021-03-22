@@ -182,7 +182,7 @@ export class TabsList extends HTMLChildrenMixin(LitElement) {
     const parent = el.parentNode;
     const grandparent = parent.parentNode;
 
-    this.displayedIcon =parseInt(el.getAttribute('data-index'));
+    this.displayedIcon = parseInt(el.getAttribute('data-index'));
 
     // Remove all current selected tabs
     parent
@@ -298,10 +298,10 @@ export class TabsList extends HTMLChildrenMixin(LitElement) {
     return html`
     <div class="tabs-list"> 
     ${this.collapsibleTabs && window.innerWidth < 764 ? html`
-        <div class="tab-list__icons tab-list__icons-mobile-view" role="tablist" aria-label="¿Qué hacemos?" @keydown="${this._changeTabWithKeyboard}">
+        <div class="tab-list__icons tab-list__icons-mobile-view" role="tablist" aria-label="Iconos" @keydown="${this._changeTabWithKeyboard}">
         ${this.drawMobileView(icons, tabs)}
         </div>` : html` 
-        <div class="tab-list__icons ${classMap({ icons_scroll_tabs: this.scrollTabs })}" role="tablist" aria-label="¿Qué hacemos?" @keydown="${this._changeTabWithKeyboard}">
+        <div class="tab-list__icons ${classMap({ icons_scroll_tabs: this.scrollTabs })}" role="tablist" aria-label="contenido" @keydown="${this._changeTabWithKeyboard}">
           ${this.drawIcons(icons)}
         </div>
         ${this.drawTabs(tabs)}
