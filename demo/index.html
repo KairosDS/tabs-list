@@ -1,0 +1,179 @@
+<!doctype html>
+<html>
+  <head>
+    <title>tabs-list demo</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
+    <script type="module" src="../tabs-list.js"></script>
+    <style>
+      :root {
+        --main-font-family: 'Courier New', Courier, monospace;
+        --base-font-size: 18px;
+        --main-color: #5900ff;
+        --main-text-color: #4d4d4e;
+        --secondary-text-color: #575756;
+        --secondary-color: #0E3540;
+        --button-font-color: #FFFFFF;
+        --button-font-family: 'Arial, Helvetica, sans-serif';
+        --button-font-size: 1rem;
+        --button-line-height: 1.1;
+        --button-tab-width-mobile: 150px;
+        --button-tab-width-desktop: 250px;
+        --button-img-tab-height: 100px;
+
+      }
+      .blocks {
+        display:flex;
+        flex-direction:row;
+        flex-wrap: wrap;
+      }
+      .block {
+        display:flex;
+        flex-direction:column;
+        flex-wrap: wrap;
+        white-space: normal;
+      }
+      .code {
+        padding: 20px;
+        color:#FFF; 
+        background: rgb(0, 0, 0);
+      }
+      .attributes {
+        padding-left: 20px;
+      } 
+
+      .tabs-with-scroll {
+        margin-top: 50px;
+        margin-bottom: 50px;
+      }
+      .tabs-with-scroll h2{
+        font-family: 'Courier New', Courier, monospace;
+        color: white;
+        background-color: var(--main-color);
+      }
+      @media all and (min-width: 768px)  {
+        .tabs-list-container {
+          margin: 0 auto;
+          max-width: 900px;
+        }
+      }
+      .tabs-list-container {
+        width:100%;
+      }
+      
+    </style>
+  </head>
+
+  <body>
+    <div class="vertical-section-container centered">
+      <h3>Basic tabs-list Demo</h3>
+      <div class="blocks">
+        <pre class="block code">
+          <code>
+            &lt;tabs-list&gt;&lt;/tabs-list&gt;
+          </code>
+        </pre>
+        <pre class="block attributes">
+          <h3>Attributes</h3>
+          <ul>
+            <li>property1 (String)</li>
+            <li>property2 (Number)</li>
+          </ul>
+        </pre>
+      </div>
+      <div id="buttonCustomEvent">Envio</div>
+    <div class="tabs-list-container">
+      <div class="tabs-with-scroll">
+        <h2>EJEMPLO TABS</h2>
+      <tabs-list collapsible-tabs="true" img-icon-selected="/demo/assets/arrow-open.svg" img-icon-not-selected="/demo/assets/plus-circle.svg" break-line-separator = ";" >
+        <div id="icons">
+          <button>
+            <img id="iconImage" src="/demo/assets/person1.svg" alt="abre" data-content="tab1" data-id="tab-1"/>
+          </button>
+          <button>
+            <img id="iconImage" src="/demo/assets/person1.svg" alt="abre" data-content="tab2" data-id="tab-2"/>
+          </button>
+          <button>
+            <img id="iconImage" src="/demo/assets/person1.svg" alt="abre" data-content="tab3" data-id="tab-3"/>
+          </button>
+        </div>
+        <div id="tabs">
+          <div>
+            <h3 id="title">titletab1</h3>
+            <div id="description">Lorem ipsum, dolor sit amet consectetur adipisicing elit.; Tempora veniam eius ratione ab corporis sint mollitia, delectus nisi magni consequatur. Animi voluptatem neque odit ea quam soluta necessitatibus at facilis.; Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor rerum perferendis, nihil molestias consectetur illo enim perspiciatis molestiae mollitia quis veritatis suscipit iste necessitatibus dolorum hic fugit, sunt ut minus.</div>
+            <img id="image" src="/demo/assets/default.png" alt=""/>
+            <a id="url" href="/">linktab</a>
+          </div>
+          <div>
+            <h3 id="title">titletab2</h3>
+            <div id="description">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempora veniam eius ratione ab corporis sint mollitia, delectus nisi magni consequatur.; Animi voluptatem neque odit ea quam soluta necessitatibus at facilis.</div>
+            <img id="image" src="/demo/assets/default.png" alt=""/>
+            <a id="url" href="/">linktab</a>
+          </div>
+          <div>
+            <h3 id="title">titletab3</h3>
+            <div id="description">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempora veniam eius ratione ab corporis sint mollitia, delectus nisi magni consequatur. Animi voluptatem neque odit ea quam soluta necessitatibus at facilis.</div>
+            <img id="image" src="" alt=""/>
+            <a id="url" href="/">linktab</a>
+          </div>
+        </div>
+      </tabs-list>
+      <div>
+      <div class="tabs-with-scroll">
+        <h2>EJEMPLO TABS CON SCROLL EN MÓVIL</h2>
+      <tabs-list img-icon-selected="/demo/assets/arrow-open.svg" img-icon-not-selected="/demo/assets/plus-circle.svg" break-line-separator = ";" scroll-tabs="true" >
+        <div id="icons">
+          <button>
+            <img id="iconImage" src="/demo/assets/person1.svg" alt="abre" data-content="tab1" data-id="tab-1"/>
+          </button>
+          <button>
+            <img id="iconImage" src="/demo/assets/atom-1472657_640.png" alt="abre" data-content="tab2" data-id="tab-2"/>
+          </button>
+          <button>
+            <img id="iconImage" src="/demo/assets/person1.svg" alt="abre" data-content="tab3" data-id="tab-3"/>
+          </button>
+        </div>
+        <div id="tabs">
+          <div>
+            <h3 id="title">titletab1</h3>
+            <h3 id="subTitle">subtitleTab1</h3>
+            <div id="description">Lorem ipsum, dolor sit amet consectetur adipisicing elit.; Tempora veniam eius ratione ab corporis sint mollitia, delectus nisi magni consequatur. Animi voluptatem neque odit ea quam soluta necessitatibus at facilis.; Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor rerum perferendis, nihil molestias consectetur illo enim perspiciatis molestiae mollitia quis veritatis suscipit iste necessitatibus dolorum hic fugit, sunt ut minus.</div>
+            <img id="image" src="/demo/assets/default.png" alt=""/>
+            <a id="url" href="/">linktab</a>
+          </div>
+          <div>
+            <h3 id="title">titletab2</h3>
+            <h3 id="subTitle">subtitleTab2</h3>
+            <div id="description">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempora veniam eius ratione ab corporis sint mollitia, delectus nisi magni consequatur.; Animi voluptatem neque odit ea quam soluta necessitatibus at facilis.</div>
+            <img id="image" src="/demo/assets/default.png" alt=""/>
+            <a id="url" href="/">linktab</a>
+          </div>
+          <div>
+            <h3 id="title">titletab3</h3>
+            <h3 id="subTitle">subtitleTab3</h3>
+            <div id="description">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempora veniam eius ratione ab corporis sint mollitia, delectus nisi magni consequatur. Animi voluptatem neque odit ea quam soluta necessitatibus at facilis.</div>
+            <img id="image" src="" alt=""/>
+            <a id="url" href="/">linktab</a>
+          </div>
+        </div>
+      </tabs-list>
+    </div>
+    </div>
+    </div>
+    <script>
+      const buttonMessage = document.getElementById('buttonCustomEvent');
+        const detail = { name: window.location.hash.slice(1) };
+
+        function eventSend (){
+          const event = new CustomEvent('item:selected', {
+          detail,
+          bubbles: true,
+          composed: true,
+        });
+        return event
+        }
+        setTimeout(()=>{ document.dispatchEvent(eventSend())}, 1000)
+       
+      </script>
+  </body>
+</html>
