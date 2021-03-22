@@ -162,8 +162,6 @@
     </div>
     <script>
       const buttonMessage = document.getElementById('buttonCustomEvent');
-      console.log('index')
-        //const detail = { name: 'tab-2' };
         const detail = { name: window.location.hash.slice(1) };
 
         function eventSend (){
@@ -172,7 +170,6 @@
           bubbles: true,
           composed: true,
         });
-        console.log(event)
         return event
         }
         setTimeout(()=>{ document.dispatchEvent(eventSend())}, 1000)

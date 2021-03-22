@@ -24,20 +24,22 @@ The content is the html code inside the component. the following structure shoul
 
 ```
 
-* Data-id => tab id.
+* Data-id => tab id
 * Optional tabs items:
       * id="subTitle"
       * id="image"
       * id="url"
 
-## Tabs-list
+## There are three views in the component that are controlled by using the attributes:
+
+### Tabs-list no attribute
 <img src="demo/assets/tabs-list.png" alt="Scroll tabs" style=" margin-right: 10px; width:450px;" />
 
-## Tabs scroll-tabs="true"
+### Tabs scroll-tabs="true"
 <img src="demo/assets/scroll-tabs.png" alt="Scroll tabs" style=" margin-right: 10px; width:500px;" />
-<img src="demo/assets/movil-scroll.png" alt="Scroll tabs" style=" margin-right: 10px; height: 400px" />
+<img src="demo/assets/movil-scroll.png" alt="Scroll tabs" style=" margin-right: 10px; height: 355px" />
 
-## Tabs collapsible-tabs="true"
+### Tabs collapsible-tabs="true"
 <img src="demo/assets/movil-collapsable.png" alt="Scroll tabs" style=" margin-right: 10px; height: 400px" />
 
 
