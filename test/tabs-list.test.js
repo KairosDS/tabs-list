@@ -9,28 +9,28 @@ describe('TabsList', () => {
     const el = await fixture(
       html`
       <tabs-list img-icon-selected="/demo/assets/arrow-open.svg" img-icon-not-selected="/demo/assets/plus-circle.svg" break-line-separator = ";" >
-      <div id="icons">
+      <div data-id="icons">
         <button>
-          <img id="iconImage" src="/demo/assets/person1.svg" alt="abre" data-content="tab1" data-id="tab-1"/>
+          <img data-id="iconImage" src="/demo/assets/person1.svg" alt="abre" data-content="tab1" id="tab-1"/>
         </button>
         <button>
-          <img id="iconImage" src="/demo/assets/person1.svg" alt="abre" data-content="tab2" data-id="tab-2"/>
+          <img data-id="iconImage" src="/demo/assets/person1.svg" alt="abre" data-content="tab2" id="tab-2"/>
         </button>
       </div>
       <div id="tabs">
         <div>
-          <h3 id="title">titletab1</h3>
-          <div id="description">Lorem ipsum, dolor sit amet consectetur adipisicing elit.; Tempora veniam eius ratione ab corporis sint mollitia, delectus nisi magni consequatur. Animi voluptatem neque odit ea quam soluta necessitatibus at facilis.; Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor rerum perferendis, nihil molestias consectetur illo enim perspiciatis molestiae mollitia quis veritatis suscipit iste necessitatibus dolorum hic fugit, sunt ut minus.</div>
-          <img id="image" src="" alt=""/>
-          <a id="url" href="/">linktab</a>
-          <div id="download"></div>
+          <h3 data-id="title">titletab1</h3>
+          <div data-id="description">Lorem ipsum, dolor sit amet consectetur adipisicing elit.; Tempora veniam eius ratione ab corporis sint mollitia, delectus nisi magni consequatur. Animi voluptatem neque odit ea quam soluta necessitatibus at facilis.; Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor rerum perferendis, nihil molestias consectetur illo enim perspiciatis molestiae mollitia quis veritatis suscipit iste necessitatibus dolorum hic fugit, sunt ut minus.</div>
+          <img data-id="image" src="" alt=""/>
+          <a data-id="url" href="/">linktab</a>
+          <div data-id="download"></div>
         </div>
         <div>
-          <h3 id="title">titletab2</h3>
-          <div id="description">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempora veniam eius ratione ab corporis sint mollitia, delectus nisi magni consequatur. Animi voluptatem neque odit ea quam soluta necessitatibus at facilis.</div>
-          <img id="image" src="" alt=""/>
-          <a id="url" href="/">linktab</a>
-          <div id="download"></div>
+          <h3 data-id="title">titletab2</h3>
+          <div data-id="description">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempora veniam eius ratione ab corporis sint mollitia, delectus nisi magni consequatur. Animi voluptatem neque odit ea quam soluta necessitatibus at facilis.</div>
+          <img data-id="image" src="" alt=""/>
+          <a data-id="url" href="/">linktab</a>
+          <div data-id="download"></div>
         </div>
       </div>
     </tabs-list>
@@ -44,28 +44,28 @@ describe('TabsList', () => {
     const el = await fixture(
       html`
       <tabs-list img-icon-selected="/demo/assets/arrow-open.svg" img-icon-not-selected="/demo/assets/plus-circle.svg" >
-      <div id="icons">
+      <div data-id="icons">
         <button>
-          <img id="iconImage" src="/demo/assets/person1.svg" alt="abre" data-content="tab1" data-id="tab-1"/>
+          <img data-id="iconImage" src="/demo/assets/person1.svg" alt="abre" data-content="tab1" id="tab-1"/>
         </button>
         <button>
-          <img id="iconImage" src="/demo/assets/person1.svg" alt="abre" data-content="tab2" data-id="tab-2"/>
+          <img data-id="iconImage" src="/demo/assets/person1.svg" alt="abre" data-content="tab2" id="tab-2"/>
         </button>
       </div>
       <div id="tabs">
         <div>
-          <h3 id="title">titletab1</h3>
-          <div id="description">Lorem ipsum, dolor sit amet consectetur adipisicing elit.; Tempora veniam eius ratione ab corporis sint mollitia, delectus nisi magni consequatur. Animi voluptatem neque odit ea quam soluta necessitatibus at facilis.; Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor rerum perferendis, nihil molestias consectetur illo enim perspiciatis molestiae mollitia quis veritatis suscipit iste necessitatibus dolorum hic fugit, sunt ut minus.</div>
-          <img id="image" src="" alt=""/>
-          <a id="url" href="/">linktab</a>
-          <div id="download"></div>
+          <h3 data-id="title">titletab1</h3>
+          <div data-id="description">Lorem ipsum, dolor sit amet consectetur adipisicing elit.; Tempora veniam eius ratione ab corporis sint mollitia, delectus nisi magni consequatur. Animi voluptatem neque odit ea quam soluta necessitatibus at facilis.; Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor rerum perferendis, nihil molestias consectetur illo enim perspiciatis molestiae mollitia quis veritatis suscipit iste necessitatibus dolorum hic fugit, sunt ut minus.</div>
+          <img data-id="image" src="" alt=""/>
+          <a data-id="url" href="/">linktab</a>
+          <div data-id="download"></div>
         </div>
         <div>
-          <h3 id="title">titletab2</h3>
-          <div id="description">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempora veniam eius ratione ab corporis sint mollitia, delectus nisi magni consequatur. Animi voluptatem neque odit ea quam soluta necessitatibus at facilis.</div>
-          <img id="image" src="" alt=""/>
-          <a id="url" href="/">linktab</a>
-          <div id="download"></div>
+          <h3 data-id="title">titletab2</h3>
+          <div data-id="description">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempora veniam eius ratione ab corporis sint mollitia, delectus nisi magni consequatur. Animi voluptatem neque odit ea quam soluta necessitatibus at facilis.</div>
+          <img data-id="image" src="" alt=""/>
+          <a data-id="url" href="/">linktab</a>
+          <div data-id="download"></div>
         </div>
       </div>
     </tabs-list>
@@ -80,28 +80,28 @@ describe('TabsList', () => {
     const el = await fixture(
       html`
       <tabs-list collapsible-tabs="true" img-icon-selected="/demo/assets/arrow-open.svg" img-icon-not-selected="/demo/assets/plus-circle.svg" >
-      <div id="icons">
+      <div data-id="icons">
         <button>
-          <img id="iconImage" src="/demo/assets/person1.svg" alt="abre" data-content="tab1" data-id="tab-1"/>
+          <img data-id="iconImage" src="/demo/assets/person1.svg" alt="abre" data-content="tab1" id="tab-1"/>
         </button>
         <button>
-          <img id="iconImage" src="/demo/assets/person1.svg" alt="abre" data-content="tab2" data-id="tab-2"/>
+          <img data-id="iconImage" src="/demo/assets/person1.svg" alt="abre" data-content="tab2" id="tab-2"/>
         </button>
       </div>
       <div id="tabs">
         <div>
-          <h3 id="title">titletab1</h3>
-          <div id="description">Lorem ipsum, dolor sit amet consectetur adipisicing elit.; Tempora veniam eius ratione ab corporis sint mollitia, delectus nisi magni consequatur. Animi voluptatem neque odit ea quam soluta necessitatibus at facilis.; Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor rerum perferendis, nihil molestias consectetur illo enim perspiciatis molestiae mollitia quis veritatis suscipit iste necessitatibus dolorum hic fugit, sunt ut minus.</div>
-          <img id="image" src="" alt=""/>
-          <a id="url" href="/">linktab</a>
-          <div id="download"></div>
+          <h3 data-id="title">titletab1</h3>
+          <div data-id="description">Lorem ipsum, dolor sit amet consectetur adipisicing elit.; Tempora veniam eius ratione ab corporis sint mollitia, delectus nisi magni consequatur. Animi voluptatem neque odit ea quam soluta necessitatibus at facilis.; Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor rerum perferendis, nihil molestias consectetur illo enim perspiciatis molestiae mollitia quis veritatis suscipit iste necessitatibus dolorum hic fugit, sunt ut minus.</div>
+          <img data-id="image" src="" alt=""/>
+          <a data-id="url" href="/">linktab</a>
+          <div data-id="download"></div>
         </div>
         <div>
-          <h3 id="title">titletab2</h3>
-          <div id="description">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempora veniam eius ratione ab corporis sint mollitia, delectus nisi magni consequatur. Animi voluptatem neque odit ea quam soluta necessitatibus at facilis.</div>
-          <img id="image" src="" alt=""/>
-          <a id="url" href="/">linktab</a>
-          <div id="download"></div>
+          <h3 data-id="title">titletab2</h3>
+          <div data-id="description">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempora veniam eius ratione ab corporis sint mollitia, delectus nisi magni consequatur. Animi voluptatem neque odit ea quam soluta necessitatibus at facilis.</div>
+          <img data-id="image" src="" alt=""/>
+          <a data-id="url" href="/">linktab</a>
+          <div data-id="download"></div>
         </div>
       </div>
     </tabs-list>
@@ -114,28 +114,28 @@ describe('TabsList', () => {
   it('passes the a11y audit', async () => {
     const el = await fixture(html`
     < <tabs-list img-icon-selected="/demo/assets/arrow-open.svg" img-icon-not-selected="/demo/assets/plus-circle.svg" break-line-separator = ";" >
-    <div id="icons">
+    <div data-id="icons">
       <button>
-        <img id="iconImage" src="/demo/assets/person1.svg" alt="abre" data-content="tab1" data-id="tab-1"/>
+        <img data-id="iconImage" src="/demo/assets/person1.svg" alt="abre" data-content="tab1" id="tab-1"/>
       </button>
       <button>
-        <img id="iconImage" src="/demo/assets/person1.svg" alt="abre" data-content="tab2" data-id="tab-2"/>
+        <img data-id="iconImage" src="/demo/assets/person1.svg" alt="abre" data-content="tab2" id="tab-2"/>
       </button>
     </div>
     <div id="tabs">
       <div>
-        <h3 id="title">titletab1</h3>
-        <div id="description">Lorem ipsum, dolor sit amet consectetur adipisicing elit.; Tempora veniam eius ratione ab corporis sint mollitia, delectus nisi magni consequatur. Animi voluptatem neque odit ea quam soluta necessitatibus at facilis.; Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor rerum perferendis, nihil molestias consectetur illo enim perspiciatis molestiae mollitia quis veritatis suscipit iste necessitatibus dolorum hic fugit, sunt ut minus.</div>
-        <img id="image" src="" alt=""/>
-        <a id="url" href="/">linktab</a>
-        <div id="download"></div>
+        <h3 data-id="title">titletab1</h3>
+        <div data-id="description">Lorem ipsum, dolor sit amet consectetur adipisicing elit.; Tempora veniam eius ratione ab corporis sint mollitia, delectus nisi magni consequatur. Animi voluptatem neque odit ea quam soluta necessitatibus at facilis.; Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor rerum perferendis, nihil molestias consectetur illo enim perspiciatis molestiae mollitia quis veritatis suscipit iste necessitatibus dolorum hic fugit, sunt ut minus.</div>
+        <img data-id="image" src="" alt=""/>
+        <a data-id="url" href="/">linktab</a>
+        <div data-id="download"></div>
       </div>
       <div>
-        <h3 id="title">titletab2</h3>
-        <div id="description">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempora veniam eius ratione ab corporis sint mollitia, delectus nisi magni consequatur.; Animi voluptatem neque odit ea quam soluta necessitatibus at facilis.</div>
-        <img id="image" src="" alt=""/>
-        <a id="url" href="/">linktab</a>
-        <div id="download"></div>
+        <h3 data-id="title">titletab2</h3>
+        <div data-id="description">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempora veniam eius ratione ab corporis sint mollitia, delectus nisi magni consequatur.; Animi voluptatem neque odit ea quam soluta necessitatibus at facilis.</div>
+        <img data-id="image" src="" alt=""/>
+        <a data-id="url" href="/">linktab</a>
+        <div data-id="download"></div>
       </div>
     </div>
   </tabs-list>
@@ -148,28 +148,28 @@ describe('TabsList', () => {
     const el = await fixture(
       html`
       < <tabs-list img-icon-selected="/demo/assets/arrow-open.svg" img-icon-not-selected="/demo/assets/plus-circle.svg" break-line-separator = ";" >
-      <div id="icons">
+      <div data-id="icons">
         <button>
-          <img id="iconImage" src="/demo/assets/person1.svg" alt="abre" data-content="tab1" data-id="tab-1"/>
+          <img data-id="iconImage" src="/demo/assets/person1.svg" alt="abre" data-content="tab1" id="tab-1"/>
         </button>
         <button>
-          <img id="iconImage" src="/demo/assets/person1.svg" alt="abre" data-content="tab2" data-id="tab-2"/>
+          <img data-id="iconImage" src="/demo/assets/person1.svg" alt="abre" data-content="tab2" id="tab-2"/>
         </button>
       </div>
       <div id="tabs">
         <div>
-          <h3 id="title">titletab1</h3>
-          <div id="description">Lorem ipsum, dolor sit amet consectetur adipisicing elit.; Tempora veniam eius ratione ab corporis sint mollitia, delectus nisi magni consequatur. Animi voluptatem neque odit ea quam soluta necessitatibus at facilis.; Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor rerum perferendis, nihil molestias consectetur illo enim perspiciatis molestiae mollitia quis veritatis suscipit iste necessitatibus dolorum hic fugit, sunt ut minus.</div>
-          <img id="image" src="" alt=""/>
-          <a id="url" href="/">linktab</a>
-          <div id="download"></div>
+          <h3 data-id="title">titletab1</h3>
+          <div data-id="description">Lorem ipsum, dolor sit amet consectetur adipisicing elit.; Tempora veniam eius ratione ab corporis sint mollitia, delectus nisi magni consequatur. Animi voluptatem neque odit ea quam soluta necessitatibus at facilis.; Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor rerum perferendis, nihil molestias consectetur illo enim perspiciatis molestiae mollitia quis veritatis suscipit iste necessitatibus dolorum hic fugit, sunt ut minus.</div>
+          <img data-id="image" src="" alt=""/>
+          <a data-id="url" href="/">linktab</a>
+          <div data-id="download"></div>
         </div>
         <div>
-          <h3 id="title">titletab2</h3>
-          <div id="description">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempora veniam eius ratione ab corporis sint mollitia, delectus nisi magni consequatur.; Animi voluptatem neque odit ea quam soluta necessitatibus at facilis.</div>
-          <img id="image" src="" alt=""/>
-          <a id="url" href="/">linktab</a>
-          <div id="download"></div>
+          <h3 data-id="title">titletab2</h3>
+          <div data-id="description">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempora veniam eius ratione ab corporis sint mollitia, delectus nisi magni consequatur.; Animi voluptatem neque odit ea quam soluta necessitatibus at facilis.</div>
+          <img data-id="image" src="" alt=""/>
+          <a data-id="url" href="/">linktab</a>
+          <div data-id="download"></div>
         </div>
       </div>
     </tabs-list>
@@ -186,28 +186,28 @@ it('User click on menu: Called _changeTabWithKeyboard method to go right', async
   const el = await fixture(
     html`
     < <tabs-list img-icon-selected="/demo/assets/arrow-open.svg" img-icon-not-selected="/demo/assets/plus-circle.svg" break-line-separator = ";" >
-    <div id="icons">
+    <div data-id="icons">
       <button>
-        <img id="iconImage" src="/demo/assets/person1.svg" alt="abre" data-content="tab1" data-id="tab-1"/>
+        <img data-id="iconImage" src="/demo/assets/person1.svg" alt="abre" data-content="tab1" id="tab-1"/>
       </button>
       <button>
-        <img id="iconImage" src="/demo/assets/person1.svg" alt="abre" data-content="tab2" data-id="tab-2"/>
+        <img data-id="iconImage" src="/demo/assets/person1.svg" alt="abre" data-content="tab2" id="tab-2"/>
       </button>
     </div>
     <div id="tabs">
       <div>
-        <h3 id="title">titletab1</h3>
-        <div id="description">Lorem ipsum, dolor sit amet consectetur adipisicing elit.; Tempora veniam eius ratione ab corporis sint mollitia, delectus nisi magni consequatur. Animi voluptatem neque odit ea quam soluta necessitatibus at facilis.; Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor rerum perferendis, nihil molestias consectetur illo enim perspiciatis molestiae mollitia quis veritatis suscipit iste necessitatibus dolorum hic fugit, sunt ut minus.</div>
-        <img id="image" src="" alt=""/>
-        <a id="url" href="/">linktab</a>
-        <div id="download"></div>
+        <h3 data-id="title">titletab1</h3>
+        <div data-id="description">Lorem ipsum, dolor sit amet consectetur adipisicing elit.; Tempora veniam eius ratione ab corporis sint mollitia, delectus nisi magni consequatur. Animi voluptatem neque odit ea quam soluta necessitatibus at facilis.; Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor rerum perferendis, nihil molestias consectetur illo enim perspiciatis molestiae mollitia quis veritatis suscipit iste necessitatibus dolorum hic fugit, sunt ut minus.</div>
+        <img data-id="image" src="" alt=""/>
+        <a data-id="url" href="/">linktab</a>
+        <div data-id="download"></div>
       </div>
       <div>
-        <h3 id="title">titletab2</h3>
-        <div id="description">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempora veniam eius ratione ab corporis sint mollitia, delectus nisi magni consequatur.; Animi voluptatem neque odit ea quam soluta necessitatibus at facilis.</div>
-        <img id="image" src="" alt=""/>
-        <a id="url" href="/">linktab</a>
-        <div id="download"></div>
+        <h3 data-id="title">titletab2</h3>
+        <div data-id="description">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempora veniam eius ratione ab corporis sint mollitia, delectus nisi magni consequatur.; Animi voluptatem neque odit ea quam soluta necessitatibus at facilis.</div>
+        <img data-id="image" src="" alt=""/>
+        <a data-id="url" href="/">linktab</a>
+        <div data-id="download"></div>
       </div>
     </div>
   </tabs-list>
@@ -227,38 +227,38 @@ it('User click on menu: Called _changeTabWithKeyboard method to go left', async 
   const el = await fixture(
     html`
     < <tabs-list img-icon-selected="/demo/assets/arrow-open.svg" img-icon-not-selected="/demo/assets/plus-circle.svg" break-line-separator = ";" >
-    <div id="icons">
+    <div data-id="icons">
       <button>
-        <img id="iconImage" src="/demo/assets/person1.svg" alt="abre" data-content="tab1" data-id="tab-1"/>
+        <img data-id="iconImage" src="/demo/assets/person1.svg" alt="abre" data-content="tab1" id="tab-1"/>
       </button>
       <button>
-        <img id="iconImage" src="/demo/assets/person1.svg" alt="abre" data-content="tab2" data-id="tab-2"/>
+        <img data-id="iconImage" src="/demo/assets/person1.svg" alt="abre" data-content="tab2" id="tab-2"/>
       </button>
       <button>
-        <img id="iconImage" src="/demo/assets/person1.svg" alt="abre" data-content="tab3" data-id="tab-3"/>
+        <img data-id="iconImage" src="/demo/assets/person1.svg" alt="abre" data-content="tab3" id="tab-3"/>
       </button>
     </div>
     <div id="tabs">
       <div>
-        <h3 id="title">titletab1</h3>
-        <div id="description">Lorem ipsum, dolor sit amet consectetur adipisicing elit.; Tempora veniam eius ratione ab corporis sint mollitia, delectus nisi magni consequatur. Animi voluptatem neque odit ea quam soluta necessitatibus at facilis.; Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor rerum perferendis, nihil molestias consectetur illo enim perspiciatis molestiae mollitia quis veritatis suscipit iste necessitatibus dolorum hic fugit, sunt ut minus.</div>
-        <img id="image" src="" alt=""/>
-        <a id="url" href="/">linktab</a>
-        <div id="download"></div>
+        <h3 data-id="title">titletab1</h3>
+        <div data-id="description">Lorem ipsum, dolor sit amet consectetur adipisicing elit.; Tempora veniam eius ratione ab corporis sint mollitia, delectus nisi magni consequatur. Animi voluptatem neque odit ea quam soluta necessitatibus at facilis.; Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor rerum perferendis, nihil molestias consectetur illo enim perspiciatis molestiae mollitia quis veritatis suscipit iste necessitatibus dolorum hic fugit, sunt ut minus.</div>
+        <img data-id="image" src="" alt=""/>
+        <a data-id="url" href="/">linktab</a>
+        <div data-id="download"></div>
       </div>
       <div>
-        <h3 id="title">titletab2</h3>
-        <div id="description">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempora veniam eius ratione ab corporis sint mollitia, delectus nisi magni consequatur.; Animi voluptatem neque odit ea quam soluta necessitatibus at facilis.</div>
-        <img id="image" src="" alt=""/>
-        <a id="url" href="/">linktab</a>
-        <div id="download"></div>
+        <h3 data-id="title">titletab2</h3>
+        <div data-id="description">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempora veniam eius ratione ab corporis sint mollitia, delectus nisi magni consequatur.; Animi voluptatem neque odit ea quam soluta necessitatibus at facilis.</div>
+        <img data-id="image" src="" alt=""/>
+        <a data-id="url" href="/">linktab</a>
+        <div data-id="download"></div>
       </div>
       <div>
-        <h3 id="title">titletab3</h3>
-        <div id="description">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempora veniam eius ratione ab corporis sint mollitia, delectus nisi magni consequatur. Animi voluptatem neque odit ea quam soluta necessitatibus at facilis.</div>
-        <img id="image" src="" alt=""/>
-        <a id="url" href="/">linktab</a>
-        <div id="download"></div>
+        <h3 data-id="title">titletab3</h3>
+        <div data-id="description">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempora veniam eius ratione ab corporis sint mollitia, delectus nisi magni consequatur. Animi voluptatem neque odit ea quam soluta necessitatibus at facilis.</div>
+        <img data-id="image" src="" alt=""/>
+        <a data-id="url" href="/">linktab</a>
+        <div data-id="download"></div>
       </div>
     </div>
   </tabs-list>

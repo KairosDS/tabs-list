@@ -39,8 +39,9 @@ export const HTMLChildrenMixin = (SuperClass) => {
       let idCounter = 0;
       if (childNodes) {
         childNodes.forEach((el) => {
+          const dataId = el.getAttribute('data-id');
           if (el.parentNode === node) {
-            const id = el.id || idCounter;
+            const id = dataId || el.id || idCounter;
             idCounter = (el.id) ? idCounter : idCounter + 1;
             if (!el.querySelectorAll('*').length) {
               if (this.HTMLAttributesToExtract.includes(el.tagName)) {

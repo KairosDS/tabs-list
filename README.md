@@ -3,33 +3,32 @@
 Lit-Element web component tabs list.
 
 
-The data is passed using the content of the html code inside the component. The following structure should be used with the same id names:
+The data is passed using the content of the html code inside the component. The following structure should be used with the same data-id names:
 
 ```
 <tabs-list>
-  <div id="icons">
+  <div data-id="icons">
     <button>
-      <img id="iconImage" src="" alt="" data-content="" data-id=""/>
+      <img data-id="iconImage" src="" alt="" data-content=""/>
     </button>
   </div>
-  <div id="tabs">
+  <div data-id="tabs">
     <div>
-      <h3 id="title"></h3>
-      <h3 id="subTitle">subtitleTab1</h3>
-      <div id="description"></div>
-      <img id="image" src="" alt=""/>
-      <a id="url" href="/"></a>
+      <h3 data-id="title"></h3>
+      <h3 data-id="subTitle">subtitleTab1</h3>
+      <div data-id="description"></div>
+      <img data-id="image" src="" alt=""/>
+      <a data-id="url" href="/"></a>
     </div>
   </div>
 </tabs-list>
 
 ```
 
-* Data-id => tab id
 * Optional tabs items:
-      * id="subTitle"
-      * id="image"
-      * id="url"
+      * data-id="subTitle"
+      * data-id="image"
+      * data-id="url"
 
 ## There are three views in the component that are controlled by using the attributes:
 
@@ -50,35 +49,35 @@ The data is passed using the content of the html code inside the component. The 
 <h2>Basic tabs-list Demo</h2>
 <h3>Demo</h3>
 <tabs-list listen-outside-event="item:selected" collapsible-tabs="true" img-icon-selected="/demo/assets/arrow-open.svg" img-icon-not-selected="/demo/assets/plus-circle.svg" break-line-separator = ";" >
-        <div id="icons">
+        <div data-id="icons">
           <button>
-            <img id="iconImage" src="/demo/assets/person1.svg" alt="abre" data-content="tab1" data-id="tab-1"/>
+            <img data-id="iconImage" src="/demo/assets/person1.svg" alt="abre" data-content="tab1" id="tab-1"/>
           </button>
           <button>
-            <img id="iconImage" src="/demo/assets/person1.svg" alt="abre" data-content="tab2" data-id="tab-2"/>
+            <img data-id="iconImage" src="/demo/assets/person1.svg" alt="abre" data-content="tab2" id="tab-2"/>
           </button>
           <button>
-            <img id="iconImage" src="/demo/assets/person1.svg" alt="abre" data-content="tab3" data-id="tab-3"/>
+            <img data-id="iconImage" src="/demo/assets/person1.svg" alt="abre" data-content="tab3" id="tab-3"/>
           </button>
         </div>
-        <div id="tabs">
+        <div data-id="tabs">
           <div>
-            <h3 id="title">titletab1</h3>
-            <div id="description">Lorem ipsum, dolor sit amet consectetur adipisicing elit.; Tempora veniam eius ratione ab corporis sint mollitia, delectus nisi magni consequatur. Animi voluptatem neque odit ea quam soluta necessitatibus at facilis.; Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor rerum perferendis, nihil molestias consectetur illo enim perspiciatis molestiae mollitia quis veritatis suscipit iste necessitatibus dolorum hic fugit, sunt ut minus.</div>
-            <img id="image" src="https://picsum.photos/seed/picsum/500/400" alt=""/>
-            <a id="url" href="/">linktab</a>
+            <h3 data-id="title">titletab1</h3>
+            <div data-id="description">Lorem ipsum, dolor sit amet consectetur adipisicing elit.; Tempora veniam eius ratione ab corporis sint mollitia, delectus nisi magni consequatur. Animi voluptatem neque odit ea quam soluta necessitatibus at facilis.; Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor rerum perferendis, nihil molestias consectetur illo enim perspiciatis molestiae mollitia quis veritatis suscipit iste necessitatibus dolorum hic fugit, sunt ut minus.</div>
+            <img data-id="image" src="https://picsum.photos/seed/picsum/500/400" alt=""/>
+            <a data-id="url" href="/">linktab</a>
           </div>
           <div>
-            <h3 id="title">titletab2</h3>
-            <div id="description">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempora veniam eius ratione ab corporis sint mollitia, delectus nisi magni consequatur.; Animi voluptatem neque odit ea quam soluta necessitatibus at facilis.</div>
-            <img id="image" src="https://picsum.photos/seed/picsum/100/200" alt=""/>
-            <a id="url" href="/">linktab</a>
+            <h3 data-id="title">titletab2</h3>
+            <div data-id="description">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempora veniam eius ratione ab corporis sint mollitia, delectus nisi magni consequatur.; Animi voluptatem neque odit ea quam soluta necessitatibus at facilis.</div>
+            <img data-id="image" src="https://picsum.photos/seed/picsum/100/200" alt=""/>
+            <a data-id="url" href="/">linktab</a>
           </div>
           <div>
-            <h3 id="title">titletab3</h3>
-            <div id="description">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempora veniam eius ratione ab corporis sint mollitia, delectus nisi magni consequatur. Animi voluptatem neque odit ea quam soluta necessitatibus at facilis.</div>
-            <img id="image" src="" alt=""/>
-            <a id="url" href="/">linktab</a>
+            <h3 data-id="title">titletab3</h3>
+            <div data-id="description">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempora veniam eius ratione ab corporis sint mollitia, delectus nisi magni consequatur. Animi voluptatem neque odit ea quam soluta necessitatibus at facilis.</div>
+            <img data-id="image" src="" alt=""/>
+            <a data-id="url" href="/">linktab</a>
           </div>
         </div>
       </tabs-list>

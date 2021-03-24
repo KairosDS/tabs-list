@@ -220,7 +220,7 @@ export class TabsList extends HTMLChildrenMixin(LitElement) {
     const iconsArr = [];
     iconsKeys.forEach((iconKey, index) => {
       const icon = icons[iconKey].iconImage;
-      const iconId = icon['data-id']
+      const iconId = icon.id;
       iconsArr.push(html`
         <button role="tab" class="tab-list__button"  aria-selected="${!index}" tabindex="0"  
           aria-controls="panel-${index}" data-index ="${index}"
@@ -265,7 +265,7 @@ export class TabsList extends HTMLChildrenMixin(LitElement) {
     const iconsArr = [];
     iconsKeys.forEach((iconKey, index) => {
       const icon = icons[iconKey].iconImage;
-      const iconId = icon['data-id']
+      const iconId = icon.id;
       iconsArr.push(html`
           <button role="tab" class="tab-list__button" aria-selected="${!index}" tabindex="0" aria-controls="panel-${index}" 
               id="${iconId}" 
