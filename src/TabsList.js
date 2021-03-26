@@ -220,7 +220,7 @@ export class TabsList extends HTMLChildrenMixin(LitElement) {
     const iconsArr = [];
     iconsKeys.forEach((iconKey, index) => {
       const icon = icons[iconKey].iconImage;
-      const iconId = icon.id;
+      const iconId = icon.id ? icon.id : `icon-${index}`
       iconsArr.push(html`
         <button role="tab" class="tab-list__button"  aria-selected="${!index}" tabindex="0"  
           aria-controls="panel-${index}" data-index ="${index}"
