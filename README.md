@@ -105,7 +105,6 @@ The data is passed using the content of the html code inside the component. The 
 |listenOutsideEvent	|  listen-outside-event   |string    |Name of custom event to listen and change the selected tab depends on #id from url  |
 |collapsibleTabs    |  collapsible-tabs       |boolean   |True: tabs in mobile version as a collapsible                                       |
 |scrollTabs         |  scroll-tabs            |boolean   |True: icons from tabs in mobile version overflow-x with scroll                      |
-|iconMobileClose    |  icon-mobile-close      |string 	 |Path of the close icon image in mobile version                                      |
 |imgIconSelected	  |  img-icon-selected      |string	   |Path of the icon to selected tab                                                    |
 |imgIconNotSelected |  img-icon-not-selected  |string	   |Path of the icon to not selected tab                                                |
 |breakLineSeparator |  break-line-separator   |string	   |String to indicate the element used to separate descriptions with break-line        |
